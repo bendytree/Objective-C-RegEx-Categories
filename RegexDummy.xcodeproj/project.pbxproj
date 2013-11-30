@@ -13,7 +13,6 @@
 		BC7CC7DD1848F63E007FCB6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC7CC7DB1848F63E007FCB6B /* InfoPlist.strings */; };
 		BC7CC7DF1848F63E007FCB6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC7DE1848F63E007FCB6B /* main.m */; };
 		BC7CC7E31848F63E007FCB6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC7E21848F63E007FCB6B /* AppDelegate.m */; };
-		BC7CC7E51848F63E007FCB6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7CC7E41848F63E007FCB6B /* Images.xcassets */; };
 		BC7CC7EC1848F63E007FCB6B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7EB1848F63E007FCB6B /* XCTest.framework */; };
 		BC7CC7ED1848F63E007FCB6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D21848F63E007FCB6B /* Foundation.framework */; };
 		BC7CC7EE1848F63E007FCB6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D61848F63E007FCB6B /* UIKit.framework */; };
@@ -48,7 +47,6 @@
 		BC7CC7E01848F63E007FCB6B /* RegexDummy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RegexDummy-Prefix.pch"; sourceTree = "<group>"; };
 		BC7CC7E11848F63E007FCB6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC7CC7E21848F63E007FCB6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BC7CC7E41848F63E007FCB6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC7CC7EA1848F63E007FCB6B /* RegexDummyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegexDummyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7EB1848F63E007FCB6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BC7CC7F31848F63E007FCB6B /* RegexDummyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegexDummyTests-Info.plist"; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 			children = (
 				BC7CC7E11848F63E007FCB6B /* AppDelegate.h */,
 				BC7CC7E21848F63E007FCB6B /* AppDelegate.m */,
-				BC7CC7E41848F63E007FCB6B /* Images.xcassets */,
 				BC7CC7D91848F63E007FCB6B /* Supporting Files */,
 			);
 			path = RegexDummy;
@@ -241,7 +238,6 @@
 			files = (
 				BC7CC7DD1848F63E007FCB6B /* InfoPlist.strings in Resources */,
 				BC7CC8021848F785007FCB6B /* readme.md in Resources */,
-				BC7CC7E51848F63E007FCB6B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
