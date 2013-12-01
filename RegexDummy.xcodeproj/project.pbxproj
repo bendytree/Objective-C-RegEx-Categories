@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC54F65F184B794200888C73 /* NSString+Matches.m in Sources */ = {isa = PBXBuildFile; fileRef = BC54F65E184B794200888C73 /* NSString+Matches.m */; };
+		BC54F661184B7DE500888C73 /* NSRegularExpression+Matches.m in Sources */ = {isa = PBXBuildFile; fileRef = BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */; };
 		BC7CC7D31848F63E007FCB6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D21848F63E007FCB6B /* Foundation.framework */; };
 		BC7CC7D51848F63E007FCB6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D41848F63E007FCB6B /* CoreGraphics.framework */; };
 		BC7CC7D71848F63E007FCB6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D61848F63E007FCB6B /* UIKit.framework */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC54F65E184B794200888C73 /* NSString+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Matches.m"; sourceTree = "<group>"; };
+		BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Matches.m"; sourceTree = "<group>"; };
 		BC7CC7CF1848F63D007FCB6B /* RegexDummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexDummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7D21848F63E007FCB6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CC7D41848F63E007FCB6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +170,8 @@
 				BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */,
 				BC7CC812184AF5CA007FCB6B /* NSString+Replace.m */,
 				BC7CC810184AC542007FCB6B /* Macros.m */,
+				BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */,
+				BC54F65E184B794200888C73 /* NSString+Matches.m */,
 			);
 			path = RegexDummyTests;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7CC80F184A56E3007FCB6B /* NSRegularExpression+Replace.m in Sources */,
+				BC54F661184B7DE500888C73 /* NSRegularExpression+Matches.m in Sources */,
 				BC7CC80B18496409007FCB6B /* NSRegularExpression+IndexOf.m in Sources */,
 				BC7CC815184AF699007FCB6B /* NSString+Split.m in Sources */,
 				BC7CC8041848FF46007FCB6B /* NSRegularExpression+IsMatch.m in Sources */,
@@ -293,6 +300,7 @@
 				BC7CC817184AF846007FCB6B /* NSString+IndexOf.m in Sources */,
 				BC7CC806184901A6007FCB6B /* NSRegularExpression+Initialization.m in Sources */,
 				BC7CC81B184AF9ED007FCB6B /* NSString+Initialization.m in Sources */,
+				BC54F65F184B794200888C73 /* NSString+Matches.m in Sources */,
 				BC7CC813184AF5CA007FCB6B /* NSString+Replace.m in Sources */,
 				BC7CC819184AF963007FCB6B /* NSString+IsMatch.m in Sources */,
 			);
@@ -489,6 +497,7 @@
 				BC7CC7FD1848F63E007FCB6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC7CC7FE1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "RegexDummyTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +506,7 @@
 				BC7CC8001848F63E007FCB6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

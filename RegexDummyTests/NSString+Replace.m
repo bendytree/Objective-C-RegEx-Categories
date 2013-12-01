@@ -26,4 +26,10 @@
     XCTAssertEqualObjects(result, @"i love lamp", @"Result should be 'I love lamp'.");
 }
 
+//- (void) test_replace_sets_callback_can_be_called_on_NSString
+//{
+//    NSString* result = [@"hi bud" replace:RX(@"(\\w)*") withSetsBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
+//    XCTAssertEqualObjects(result, @"2 3", @"Result should be '2 3'.");
+//}
+
 @end

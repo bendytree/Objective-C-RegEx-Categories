@@ -105,6 +105,93 @@
     return result;
 }
 
+- (NSString*) replace:(NSString *)string withSetsBlock:(NSString*(^)(NSArray* set))replacer
+{
+    return @"";
+//    //no replacer? just return
+//    if (!replacer) return string;
+//    
+//    //copy the string so we can replace subsections
+//    NSMutableString* result = [string mutableCopy];
+//    
+//    //get matches
+//    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+//    
+//    //replace each match (right to left so indexing doesn't get messed up)
+//    for (int i=matches.count-1; i>=0; i--) {
+//        NSTextCheckingResult* match = matches[i];
+//        NSString* matchStr = [string substringWithRange:match.range];
+//        NSString* replacement = replacer(matchStr);
+//        [result replaceCharactersInRange:match.range withString:replacement];
+//    }
+//    
+//    return result;
+}
+
+- (NSArray*) matches:(NSString*)str
+{
+    NSMutableArray* matches = [NSMutableArray array];
+    
+    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    for (NSTextCheckingResult* result in results) {
+        NSString* match = [str substringWithRange:result.range];
+        [matches addObject:match];
+    }
+    
+    return matches;
+}
+
+- (NSString*) firstMatch:(NSString*)str
+{
+    NSTextCheckingResult* match = [self firstMatchInString:str options:0 range:NSMakeRange(0, str.length)];
+    
+    if (!match) return nil;
+    
+    return [str substringWithRange:match.range];
+}
+
+- (RxMatch*) resultToMatch:(NSTextCheckingResult*)result original:(NSString*)original
+{
+    RxMatch* match = [[RxMatch alloc] init];
+    match.original = original;
+    match.range = result.range;
+    match.value = [original substringWithRange:result.range];
+    
+    //groups
+    NSMutableArray* groups = [NSMutableArray array];
+    match.groups = groups;
+    for(int i=0; i<result.numberOfRanges; i++){
+        RxMatchGroup* group = [[RxMatchGroup alloc] init];
+        group.range = [result rangeAtIndex:i];
+        group.value = [original substringWithRange:group.range];
+        [groups addObject:group];
+    }
+    
+    return match;
+}
+
+- (NSArray*) matchesWithDetails:(NSString*)str
+{
+    NSMutableArray* matches = [NSMutableArray array];
+    
+    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    for (NSTextCheckingResult* result in results) {
+        [matches addObject:[self resultToMatch:result original:str]];
+    }
+    
+    return matches;
+}
+
+- (RxMatch*) firstMatchWithDetails:(NSString*)str
+{
+    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    
+    if (results.count == 0)
+        return nil;
+    
+    return [self resultToMatch:results[0] original:str];
+}
+
 @end
 
 
@@ -151,5 +238,40 @@
     return [rx replace:self withBlock:replacer];
 }
 
+- (NSString*) replace:(NSRegularExpression *)rx withSetsBlock:(NSString*(^)(NSArray* set))replacer
+{
+    return [rx replace:self withSetsBlock:replacer];
+}
+
+- (NSArray*) matches:(NSRegularExpression*)rx
+{
+    return [rx matches:self];
+}
+
+- (NSString*) firstMatch:(NSRegularExpression*)rx
+{
+    return [rx firstMatch:self];
+}
+
+- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx
+{
+    return [rx matchesWithDetails:self];
+}
+
+- (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx
+{
+    return [rx firstMatchWithDetails:self];
+}
+
+@end
+
+
+
+@implementation RxMatch
+@synthesize value, range, groups, original;
+@end
+
+@implementation RxMatchGroup
+@synthesize value, range;
 @end
 

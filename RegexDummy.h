@@ -55,6 +55,8 @@
  * Extend NSRegularExpression.
  */
 
+@class RxMatch;
+
 @interface NSRegularExpression (RegexDummy)
 
 
@@ -164,6 +166,65 @@
 - (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer;
 
 
+/**
+ * Replaces all occurances of a regex using a block. The block receives an array of strings
+ * where the array represents the match and all of it's captured groups.
+ *
+ * ie.
+ * NSString* result = [RX(@"(\\w)*") replace:@"hi bud" withBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
+ *  => @"2 3"
+ */
+
+- (NSString*) replace:(NSString *)string withSetsBlock:(NSString*(^)(NSArray* set))replacer;
+
+
+/**
+ * Returns an array of matched root strings with no other match information.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSArray* matches = [RX(@"\\w+[@]\\w+[.](\\w+)") matches:str];
+ *  => @[ @"me@example.com", @"you@example.com" ]
+ */
+
+- (NSArray*) matches:(NSString*)str;
+
+
+/**
+ * Returns a string which is the first match of the NSRegularExpression.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSString* match = [RX(@"\\w+[@]\\w+[.](\\w+)") firstMatch:str];
+ *  => @"me@example.com"
+ */
+
+- (NSString*) firstMatch:(NSString*)str;
+
+
+/**
+ * Returns an NSArray of RxMatch* objects. Each match contains the matched
+ * value, range, groups, etc.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
+ */
+
+- (NSArray*) matchesWithDetails:(NSString*)str;
+
+
+/**
+ * Returns the first match as an RxMatch* object.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * Rx* rx = RX(@"\\w+[@]\\w+[.](\\w+)");
+ * RxMatch* match = [rx firstMatchWithDetails:str];
+ */
+
+- (RxMatch*) firstMatchWithDetails:(NSString*)str;
+
 @end
 
 
@@ -265,6 +326,79 @@
 - (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer;
 
 
+/**
+ * Replaces all occurances of a regex using a block. The block receives an array of strings
+ * where the array represents the match and all of it's captured groups.
+ *
+ * ie.
+ * NSString* result = [@"hi bud" replace:RX(@"(\\w)*") withBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
+ *  => @"2 3"
+ */
+
+- (NSString*) replace:(NSRegularExpression *)rx withSetsBlock:(NSString*(^)(NSArray* set))replacer;
+
+
+/**
+ * Returns an array of matched root strings with no other match information.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSArray* matches = [str matches:RX(@"\\w+[@]\\w+[.](\\w+)")];
+ *  => @[ @"me@example.com", @"you@example.com" ]
+ */
+
+- (NSArray*) matches:(NSRegularExpression*)rx;
+
+
+/**
+ * Returns a string which is the first match of the NSRegularExpression.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSString* match = [str firstMatch:RX(@"\\w+[@]\\w+[.](\\w+)")];
+ *  => @"me@example.com"
+ */
+
+- (NSString*) firstMatch:(NSRegularExpression*)rx;
+
+
+/**
+ * Returns an NSArray of RxMatch* objects. Each match contains the matched
+ * value, range, groups, etc.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
+ */
+
+- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx;
+
+
+/**
+ * Returns an the first match as an RxMatch* object.
+ *
+ * ie.
+ * NSString* str = @"My email is me@example.com and yours is you@example.com";
+ * RxMatch* match = [str firstMatchWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
+ */
+
+- (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx;
+
+@end
+
+
+
+@interface RxMatch : NSObject
+@property (retain) NSString* value;
+@property (assign) NSRange range;
+@property (retain) NSArray* groups;
+@property (retain) NSString* original;
+@end
+
+
+@interface RxMatchGroup : NSObject
+@property (retain) NSString* value;
+@property (assign) NSRange range;
 @end
 
 
