@@ -8,39 +8,36 @@
 
 #import "RegexDummy.h"
 
-@implementation Rx {
-    
-    NSRegularExpression* rx;
-    
+@implementation NSRegularExpression (RegexDummy)
+
+- (id) initWithPattern:(NSString*)pattern
+{
+    return [self initWithPattern:pattern options:0 error:nil];
 }
 
-- (id) initWithNSRegularExpression:(NSRegularExpression*)nsRegExp
++ (NSRegularExpression*) rx:(NSString*)pattern
 {
-    self = [super init];
-    if (self) {
-        rx = nsRegExp;
-    }
-    return self;
+    return [[self alloc] initWithPattern:pattern];
 }
 
-- (id) initWithString:(NSString*)pattern
++ (NSRegularExpression*) rx:(NSString*)pattern ignoreCase:(BOOL)ignoreCase
 {
-    return [self initWithNSRegularExpression:[[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil]];
+    return [[self alloc] initWithPattern:pattern options:ignoreCase?NSRegularExpressionCaseInsensitive:0 error:nil];
 }
 
-+ (Rx*) rx:(NSString*)pattern
++ (NSRegularExpression*) rx:(NSString*)pattern options:(NSRegularExpressionOptions)options
 {
-    return [[Rx alloc] initWithString:pattern];
+    return [[self alloc] initWithPattern:pattern options:options error:nil];
 }
 
 - (BOOL) isMatch:(NSString*)matchee
 {
-    return [rx numberOfMatchesInString:matchee options:0 range:NSMakeRange(0, matchee.length)] > 0;
+    return [self numberOfMatchesInString:matchee options:0 range:NSMakeRange(0, matchee.length)] > 0;
 }
 
 - (int) indexOf:(NSString*)matchee
 {
-    NSRange range = [rx rangeOfFirstMatchInString:matchee options:0 range:NSMakeRange(0, matchee.length)];
+    NSRange range = [self rangeOfFirstMatchInString:matchee options:0 range:NSMakeRange(0, matchee.length)];
     return range.location == NSNotFound ? -1 : range.location;
 }
 
@@ -50,7 +47,7 @@
     
     //get locations of matches
     NSMutableArray* matchingRanges = [NSMutableArray array];
-    NSArray* matches = [rx matchesInString:str options:0 range:range];
+    NSArray* matches = [self matchesInString:str options:0 range:range];
     for(NSTextCheckingResult* match in matches) {
         [matchingRanges addObject:[NSValue valueWithRange:match.range]];
     }
@@ -81,9 +78,31 @@
     return pieces;
 }
 
-- (NSString*) replace:(NSString*)str with:(NSString*)replacement
+- (NSString*) replace:(NSString*)string with:(NSString*)replacement
 {
-    return [rx stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, str.length) withTemplate:replacement];
+    return [self stringByReplacingMatchesInString:string options:0 range:NSMakeRange(0, string.length) withTemplate:replacement];
+}
+
+- (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer
+{
+    //no replacer? just return
+    if (!replacer) return string;
+    
+    //copy the string so we can replace subsections
+    NSMutableString* result = [string mutableCopy];
+    
+    //get matches
+    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    
+    //replace each match (right to left so indexing doesn't get messed up)
+    for (int i=matches.count-1; i>=0; i--) {
+        NSTextCheckingResult* match = matches[i];
+        NSString* matchStr = [string substringWithRange:match.range];
+        NSString* replacement = replacer(matchStr);
+        [result replaceCharactersInRange:match.range withString:replacement];
+    }
+    
+    return result;
 }
 
 @end
@@ -92,40 +111,45 @@
 
 @implementation NSString (RegexDummy)
 
-- (Rx*) toRx
+- (NSRegularExpression*) toRx
 {
-    return [Rx rx:self];
+    return [[NSRegularExpression alloc] initWithPattern:self];
 }
 
-- (BOOL) isMatch:(Rx*)rx
+- (NSRegularExpression*) toRxIgnoreCase:(BOOL)ignoreCase
+{
+    return [NSRegularExpression rx:self ignoreCase:ignoreCase];
+}
+
+- (NSRegularExpression*) toRxWithOptions:(NSRegularExpressionOptions)options
+{
+    return [NSRegularExpression rx:self options:options];
+}
+
+- (BOOL) isMatch:(NSRegularExpression*)rx
 {
     return [rx isMatch:self];
 }
 
-- (int) indexOf:(Rx*)rx
+- (int) indexOf:(NSRegularExpression*)rx
 {
     return [rx indexOf:self];
 }
 
-- (NSArray*) split:(Rx*)rx
+- (NSArray*) split:(NSRegularExpression*)rx
 {
     return [rx split:self];
 }
 
-- (NSString*) replace:(Rx*)rx with:(NSString*)replacement
+- (NSString*) replace:(NSRegularExpression*)rx with:(NSString*)replacement
 {
     return [rx replace:self with:replacement];
 }
 
-@end
-
-
-
-@implementation NSRegularExpression (RegexDummy)
-
-- (Rx*) toRx
+- (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer
 {
-    return [[Rx alloc] initWithNSRegularExpression:self];
+    return [rx replace:self withBlock:replacer];
 }
 
 @end
+

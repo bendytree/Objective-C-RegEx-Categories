@@ -9,9 +9,10 @@
 #import <XCTest/XCTest.h>
 #import "RegexDummy.h"
 
-@interface IsMatch : XCTestCase @end
+@interface NSRegularExpression_IsMatch : XCTestCase @end
 
-@implementation IsMatch
+
+@implementation NSRegularExpression_IsMatch
 
 - (void) test_is_match_returns_false_for_zero_matches
 {
@@ -31,15 +32,16 @@
     XCTAssert(isMatch, @"Expected isMatch to return true.");
 }
 
-- (void) test_is_match_NSString_category_returns_false_for_zero_matches
+- (void) test_is_match_defaults_to_being_case_sensitive
 {
-    BOOL isMatch = [@"I am a dog." isMatch:RX(@".at")];
+    BOOL isMatch = [RX(@"dog") isMatch:@"Dogs are nice."];
     XCTAssert(!isMatch, @"Expected isMatch to return false.");
 }
 
-- (void) test_is_match_NSString_category_returns_false_for_multiple_matches
+- (void) test_is_match_can_be_case_insensitive_using_options
 {
-    BOOL isMatch = [@"I eat cats." isMatch:RX(@".at")];
+    NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"dog" options:NSRegularExpressionCaseInsensitive error:nil];
+    BOOL isMatch = [rx isMatch:@"Dogs are nice."];
     XCTAssert(isMatch, @"Expected isMatch to return true.");
 }
 

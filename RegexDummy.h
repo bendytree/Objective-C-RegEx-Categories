@@ -9,26 +9,53 @@
 #import <Foundation/Foundation.h>
 
 
+/********************************************************/
+/*********************** MACROS *************************/
+/********************************************************/
+
+/*
+ * By default, RegexDummy creates an alias for NSRegularExpression
+ * called `Rx` and creates a macro `RX()` for quick regex creation.
+ *
+ * If you don't want these macros, add the following statement
+ * before you include this library:
+ *
+ * #define DisableRegexDummyMacros
+ */
+
 
 /**
- * A macro for creating an Rx object from a string.
- * Shorthand for initWithString:. [Rx rx:@"."] is another option.
+ * Creates a macro (alias) for NSRegularExpression named `Rx`.
  *
  * ie.
- * Rx* rx = RX(@"\d+");
- *
+ * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
  */
 
-#define RX(pattern) [Rx rx:pattern]
+#ifndef DisableRegexDummyMacros
+#define Rx NSRegularExpression
+#endif
+
+
+/**
+ * Creates a macro (alias) for NSRegularExpression named `Rx`.
+ *
+ * ie.
+ * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
+ */
+
+#ifndef DisableRegexDummyMacros
+#define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
+#endif
+
+
 
 
 
 /**
- * `Rx` is a class that wraps NSRegularExpression to simplify
- * common operations.
+ * Extend NSRegularExpression.
  */
 
-@interface Rx : NSObject
+@interface NSRegularExpression (RegexDummy)
 
 
 /*******************************************************/
@@ -40,38 +67,40 @@
  *
  * ie.
  * Rx* rx = [[Rx alloc] initWithString:@"\d+"];
- *
- * More concise initialization methods exist such as:
- * Rx* rx = RX(@"\d+");
- * Rx* rx = [Rx rx:@"\d+"];
  */
 
-- (Rx*) initWithString:(NSString*)pattern;
+- (NSRegularExpression*) initWithPattern:(NSString*)pattern;
 
 
 /**
- * Initialize an Rx object from an NSRegularExpression.
- *
- * ie.
- * NSRegularExpression* nsRegEx = [[NSRegularExpression alloc] initWithPattern:@"." options:0 error:nil];
- * Rx* rx = [[Rx alloc] initWithNSRegularExpression:nsRegEx];
- */
-
-- (Rx*) initWithNSRegularExpression:(NSRegularExpression*)nsRegExp;
-
-
-/**
- * Initialize an Rx object from a string. Shorthand for
- * initWithString:. RX(@".") is another option.
+ * Initialize an Rx object from a string.
  *
  * ie.
  * Rx* rx = [Rx rx:@"\d+"];
- *
  */
 
-+ (Rx*) rx:(NSString*)pattern;
++ (NSRegularExpression*) rx:(NSString*)pattern;
 
 
+/**
+ * Initialize an Rx object from a string. By default, NSRegularExpression
+ * is case sensitive, but this signature allows you to change that.
+ *
+ * ie.
+ * Rx* rx = [Rx rx:@"\d+" ignoreCase:YES];
+ */
+
++ (NSRegularExpression*) rx:(NSString*)pattern ignoreCase:(BOOL)ignoreCase;
+
+
+/**
+ * Initialize an Rx object from a string and options.
+ *
+ * ie.
+ * Rx* rx = [Rx rx:@"\d+" options:NSRegularExpressionCaseInsensitive];
+ */
+
++ (NSRegularExpression*) rx:(NSString*)pattern options:(NSRegularExpressionOptions)options;
 
 
 /*******************************************************/
@@ -85,7 +114,6 @@
  * ie.
  * Rx* rx = RX(@"\d+");
  * BOOL isMatch = [rx isMatch:@"Dog #1"]; // => true
- *
  */
 
 - (BOOL) isMatch:(NSString*)matchee;
@@ -96,7 +124,6 @@
  *
  * ie.
  * int i = [RX(@"\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
- *
  */
 
 - (int) indexOf:(NSString*)str;
@@ -122,7 +149,19 @@
  *  => @"meow meow!"
  */
 
-- (NSString*) replace:(NSString*)str with:(NSString*)replacement;
+- (NSString*) replace:(NSString*)string with:(NSString*)replacement;
+
+
+/**
+ * Replaces all occurances of a regex using a block. The block receives the match
+ * and should return the replacement.
+ *
+ * ie.
+ * NSString* result = [RX(@"[A-Z]+") replace:@"i love COW" withBlock:^(NSString*){ return @"lamp"; }];
+ *  => @"i love lamp"
+ */
+
+- (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer;
 
 
 @end
@@ -138,13 +177,35 @@
 
 
 /**
- * Initialize an Rx object from a string.
+ * Initialize an NSRegularExpression object from a string.
  *
  * ie.
- * Rx* rx = [@"\d+" toRx];
+ * NSRegularExpression* rx = [@"\d+" toRx];
  */
 
-- (Rx*) toRx;
+- (NSRegularExpression*) toRx;
+
+
+/**
+ * Initialize an NSRegularExpression object from a string with
+ * a flag denoting case-sensitivity. By default, NSRegularExpression
+ * is case sensitive.
+ *
+ * ie.
+ * NSRegularExpression* rx = [@"\d+" toRxIgnoreCase:YES];
+ */
+
+- (NSRegularExpression*) toRxIgnoreCase:(BOOL)ignoreCase;
+
+
+/**
+ * Initialize an NSRegularExpression object from a string with options.
+ *
+ * ie.
+ * NSRegularExpression* rx = [@"\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
+ */
+
+- (NSRegularExpression*) toRxWithOptions:(NSRegularExpressionOptions)options;
 
 
 /**
@@ -155,7 +216,7 @@
  * BOOL isMatch = [@"Dog #1" isMatch:RX(@"\d+")]; // => true
  */
 
-- (BOOL) isMatch:(Rx*)rx;
+- (BOOL) isMatch:(NSRegularExpression*)rx;
 
 
 /**
@@ -166,7 +227,7 @@
  * int i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\d+")]; // => 4
  */
 
-- (int) indexOf:(Rx*)rx;
+- (int) indexOf:(NSRegularExpression*)rx;
 
 
 /**
@@ -178,7 +239,7 @@
  *  => @[@"A", @"dog", @"cat"]
  */
 
-- (NSArray*) split:(Rx*)rx;
+- (NSArray*) split:(NSRegularExpression*)rx;
 
 
 /**
@@ -189,27 +250,21 @@
  *  => @"meow meow!"
  */
 
-- (NSString*) replace:(Rx*)rx with:(NSString*)replacement;
-
-@end
-
+- (NSString*) replace:(NSRegularExpression*)rx with:(NSString*)replacement;
 
 
 /**
- * Extend NSRegularExpression.
- */
-
-@interface NSRegularExpression (RegexDummy)
-
-
-/**
- * Initialize an Rx object from an NSRegularExpression.
+ * Replaces all occurances of a regex using a block. The block receives the match
+ * and should return the replacement.
  *
  * ie.
- * NSRegularExpression* nsRegEx = [[NSRegularExpression alloc] initWithPattern:@"." options:0 error:nil];
- * Rx* rx = [[Rx alloc] initWithNSRegularExpression:nsRegEx];
+ * NSString* result = [@"i love COW" replace:RX(@"[A-Z]+") withBlock:^(NSString*){ return @"lamp"; }];
+ *  => @"i love lamp"
  */
 
-- (Rx*) toRx;
+- (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer;
+
 
 @end
+
+

@@ -18,12 +18,18 @@
 		BC7CC7EE1848F63E007FCB6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7CC7D61848F63E007FCB6B /* UIKit.framework */; };
 		BC7CC7F61848F63E007FCB6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC7CC7F41848F63E007FCB6B /* InfoPlist.strings */; };
 		BC7CC8021848F785007FCB6B /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BC7CC8011848F785007FCB6B /* readme.md */; };
-		BC7CC8041848FF46007FCB6B /* IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC8031848FF46007FCB6B /* IsMatch.m */; };
-		BC7CC806184901A6007FCB6B /* Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC805184901A6007FCB6B /* Initialization.m */; };
+		BC7CC8041848FF46007FCB6B /* NSRegularExpression+IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC8031848FF46007FCB6B /* NSRegularExpression+IsMatch.m */; };
+		BC7CC806184901A6007FCB6B /* NSRegularExpression+Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC805184901A6007FCB6B /* NSRegularExpression+Initialization.m */; };
 		BC7CC8091849035C007FCB6B /* RegexDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC8081849035C007FCB6B /* RegexDummy.m */; };
-		BC7CC80B18496409007FCB6B /* IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80A18496409007FCB6B /* IndexOf.m */; };
-		BC7CC80D184A3C71007FCB6B /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80C184A3C71007FCB6B /* Split.m */; };
-		BC7CC80F184A56E3007FCB6B /* Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80E184A56E3007FCB6B /* Replace.m */; };
+		BC7CC80B18496409007FCB6B /* NSRegularExpression+IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80A18496409007FCB6B /* NSRegularExpression+IndexOf.m */; };
+		BC7CC80D184A3C71007FCB6B /* NSRegularExpression+Split.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80C184A3C71007FCB6B /* NSRegularExpression+Split.m */; };
+		BC7CC80F184A56E3007FCB6B /* NSRegularExpression+Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */; };
+		BC7CC811184AC542007FCB6B /* Macros.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC810184AC542007FCB6B /* Macros.m */; };
+		BC7CC813184AF5CA007FCB6B /* NSString+Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC812184AF5CA007FCB6B /* NSString+Replace.m */; };
+		BC7CC815184AF699007FCB6B /* NSString+Split.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC814184AF699007FCB6B /* NSString+Split.m */; };
+		BC7CC817184AF846007FCB6B /* NSString+IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */; };
+		BC7CC819184AF963007FCB6B /* NSString+IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */; };
+		BC7CC81B184AF9ED007FCB6B /* NSString+Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +58,19 @@
 		BC7CC7F31848F63E007FCB6B /* RegexDummyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegexDummyTests-Info.plist"; sourceTree = "<group>"; };
 		BC7CC7F51848F63E007FCB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC7CC8011848F785007FCB6B /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
-		BC7CC8031848FF46007FCB6B /* IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsMatch.m; sourceTree = "<group>"; };
-		BC7CC805184901A6007FCB6B /* Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Initialization.m; sourceTree = "<group>"; };
+		BC7CC8031848FF46007FCB6B /* NSRegularExpression+IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+IsMatch.m"; sourceTree = "<group>"; };
+		BC7CC805184901A6007FCB6B /* NSRegularExpression+Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Initialization.m"; sourceTree = "<group>"; };
 		BC7CC8071849035C007FCB6B /* RegexDummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexDummy.h; sourceTree = "<group>"; };
 		BC7CC8081849035C007FCB6B /* RegexDummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexDummy.m; sourceTree = "<group>"; };
-		BC7CC80A18496409007FCB6B /* IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexOf.m; sourceTree = "<group>"; };
-		BC7CC80C184A3C71007FCB6B /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
-		BC7CC80E184A56E3007FCB6B /* Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Replace.m; sourceTree = "<group>"; };
+		BC7CC80A18496409007FCB6B /* NSRegularExpression+IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+IndexOf.m"; sourceTree = "<group>"; };
+		BC7CC80C184A3C71007FCB6B /* NSRegularExpression+Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Split.m"; sourceTree = "<group>"; };
+		BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Replace.m"; sourceTree = "<group>"; };
+		BC7CC810184AC542007FCB6B /* Macros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Macros.m; sourceTree = "<group>"; };
+		BC7CC812184AF5CA007FCB6B /* NSString+Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Replace.m"; sourceTree = "<group>"; };
+		BC7CC814184AF699007FCB6B /* NSString+Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Split.m"; sourceTree = "<group>"; };
+		BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IndexOf.m"; sourceTree = "<group>"; };
+		BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IsMatch.m"; sourceTree = "<group>"; };
+		BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Initialization.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,11 +155,17 @@
 			isa = PBXGroup;
 			children = (
 				BC7CC7F21848F63E007FCB6B /* Supporting Files */,
-				BC7CC8031848FF46007FCB6B /* IsMatch.m */,
-				BC7CC805184901A6007FCB6B /* Initialization.m */,
-				BC7CC80A18496409007FCB6B /* IndexOf.m */,
-				BC7CC80C184A3C71007FCB6B /* Split.m */,
-				BC7CC80E184A56E3007FCB6B /* Replace.m */,
+				BC7CC8031848FF46007FCB6B /* NSRegularExpression+IsMatch.m */,
+				BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */,
+				BC7CC805184901A6007FCB6B /* NSRegularExpression+Initialization.m */,
+				BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */,
+				BC7CC80A18496409007FCB6B /* NSRegularExpression+IndexOf.m */,
+				BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */,
+				BC7CC80C184A3C71007FCB6B /* NSRegularExpression+Split.m */,
+				BC7CC814184AF699007FCB6B /* NSString+Split.m */,
+				BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */,
+				BC7CC812184AF5CA007FCB6B /* NSString+Replace.m */,
+				BC7CC810184AC542007FCB6B /* Macros.m */,
 			);
 			path = RegexDummyTests;
 			sourceTree = "<group>";
@@ -266,11 +284,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC7CC80F184A56E3007FCB6B /* Replace.m in Sources */,
-				BC7CC80B18496409007FCB6B /* IndexOf.m in Sources */,
-				BC7CC8041848FF46007FCB6B /* IsMatch.m in Sources */,
-				BC7CC80D184A3C71007FCB6B /* Split.m in Sources */,
-				BC7CC806184901A6007FCB6B /* Initialization.m in Sources */,
+				BC7CC80F184A56E3007FCB6B /* NSRegularExpression+Replace.m in Sources */,
+				BC7CC80B18496409007FCB6B /* NSRegularExpression+IndexOf.m in Sources */,
+				BC7CC815184AF699007FCB6B /* NSString+Split.m in Sources */,
+				BC7CC8041848FF46007FCB6B /* NSRegularExpression+IsMatch.m in Sources */,
+				BC7CC80D184A3C71007FCB6B /* NSRegularExpression+Split.m in Sources */,
+				BC7CC811184AC542007FCB6B /* Macros.m in Sources */,
+				BC7CC817184AF846007FCB6B /* NSString+IndexOf.m in Sources */,
+				BC7CC806184901A6007FCB6B /* NSRegularExpression+Initialization.m in Sources */,
+				BC7CC81B184AF9ED007FCB6B /* NSString+Initialization.m in Sources */,
+				BC7CC813184AF5CA007FCB6B /* NSString+Replace.m in Sources */,
+				BC7CC819184AF963007FCB6B /* NSString+IsMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
