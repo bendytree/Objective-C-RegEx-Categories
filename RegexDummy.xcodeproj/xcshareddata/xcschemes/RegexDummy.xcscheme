@@ -20,6 +20,20 @@
                ReferencedContainer = "container:RegexDummy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC7CC7E91848F63E007FCB6B"
+               BuildableName = "RegexDummyTests.xctest"
+               BlueprintName = "RegexDummyTests"
+               ReferencedContainer = "container:RegexDummy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
