@@ -167,15 +167,16 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives an array of strings
- * where the array represents the match and all of it's captured groups.
+ * Replaces all occurances of a regex using a block. The block receives a RxMatch object
+ * that contains all the details of the match and should return a string
+ * which is what the match is replaced with.
  *
  * ie.
- * NSString* result = [RX(@"(\\w)*") replace:@"hi bud" withBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
+ * NSString* result = [RX(@"\\w+") replace:@"hi bud" withBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
  *  => @"2 3"
  */
 
-- (NSString*) replace:(NSString *)string withSetsBlock:(NSString*(^)(NSArray* set))replacer;
+- (NSString*) replace:(NSString *)string withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
 
 
 /**
@@ -327,15 +328,16 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives an array of strings
- * where the array represents the match and all of it's captured groups.
+ * Replaces all occurances of a regex using a block. The block receives an RxMatch
+ * object which contains all of the details for each match and should return a string
+ * which is what the match is replaced with.
  *
  * ie.
- * NSString* result = [@"hi bud" replace:RX(@"(\\w)*") withBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
+ * NSString* result = [@"hi bud" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
  *  => @"2 3"
  */
 
-- (NSString*) replace:(NSRegularExpression *)rx withSetsBlock:(NSString*(^)(NSArray* set))replacer;
+- (NSString*) replace:(NSRegularExpression *)rx withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
 
 
 /**

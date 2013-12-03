@@ -105,27 +105,26 @@
     return result;
 }
 
-- (NSString*) replace:(NSString *)string withSetsBlock:(NSString*(^)(NSArray* set))replacer
+- (NSString*) replace:(NSString *)string withDetailsBlock:(NSString*(^)(RxMatch* match))replacer
 {
-    return @"";
-//    //no replacer? just return
-//    if (!replacer) return string;
-//    
-//    //copy the string so we can replace subsections
-//    NSMutableString* result = [string mutableCopy];
-//    
-//    //get matches
-//    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
-//    
-//    //replace each match (right to left so indexing doesn't get messed up)
-//    for (int i=matches.count-1; i>=0; i--) {
-//        NSTextCheckingResult* match = matches[i];
-//        NSString* matchStr = [string substringWithRange:match.range];
-//        NSString* replacement = replacer(matchStr);
-//        [result replaceCharactersInRange:match.range withString:replacement];
-//    }
-//    
-//    return result;
+    //no replacer? just return
+    if (!replacer) return string;
+    
+    //copy the string so we can replace subsections
+    NSMutableString* replaced = [string mutableCopy];
+    
+    //get matches
+    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    
+    //replace each match (right to left so indexing doesn't get messed up)
+    for (int i=matches.count-1; i>=0; i--) {
+        NSTextCheckingResult* result = matches[i];
+        RxMatch* match = [self resultToMatch:result original:string];
+        NSString* replacement = replacer(match);
+        [replaced replaceCharactersInRange:result.range withString:replacement];
+    }
+    
+    return replaced;
 }
 
 - (NSArray*) matches:(NSString*)str
@@ -155,7 +154,7 @@
     RxMatch* match = [[RxMatch alloc] init];
     match.original = original;
     match.range = result.range;
-    match.value = [original substringWithRange:result.range];
+    match.value = result.range.length ? [original substringWithRange:result.range] : nil;
     
     //groups
     NSMutableArray* groups = [NSMutableArray array];
@@ -163,7 +162,7 @@
     for(int i=0; i<result.numberOfRanges; i++){
         RxMatchGroup* group = [[RxMatchGroup alloc] init];
         group.range = [result rangeAtIndex:i];
-        group.value = [original substringWithRange:group.range];
+        group.value = group.range.length ? [original substringWithRange:group.range] : nil;
         [groups addObject:group];
     }
     
@@ -238,9 +237,9 @@
     return [rx replace:self withBlock:replacer];
 }
 
-- (NSString*) replace:(NSRegularExpression *)rx withSetsBlock:(NSString*(^)(NSArray* set))replacer
+- (NSString*) replace:(NSRegularExpression *)rx withDetailsBlock:(NSString*(^)(RxMatch* match))replacer
 {
-    return [rx replace:self withSetsBlock:replacer];
+    return [rx replace:self withDetailsBlock:replacer];
 }
 
 - (NSArray*) matches:(NSRegularExpression*)rx

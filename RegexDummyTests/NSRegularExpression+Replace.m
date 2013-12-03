@@ -38,16 +38,16 @@
     XCTAssertEqualObjects(result, @"i love COW", @"Result should be unchanged.");
 }
 
-//- (void) test_replace_replaces_with_sets_callback
-//{
-//    NSString* result = [RX(@"(\\w)*") replace:@"hi bud" withSetsBlock:^(NSArray* set){ return [NSString stringWithFormat:@"%i", set.count]; }];
-//    XCTAssertEqualObjects(result, @"2 3", @"Result should be '2 3'.");
-//}
-//
-//- (void) test_replace_replaces_with_nil_sets_callback_returns_original_string
-//{
-//    NSString* result = [RX(@".") replace:@"hi bud" withSetsBlock:nil];
-//    XCTAssertEqualObjects(result, @"hi bud", @"Result should be the original string.");
-//}
+- (void) test_replace_replaces_with_sets_callback
+{
+    NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
+    XCTAssertEqualObjects(result, @"2 3", @"Result should be '2 3'.");
+}
+
+- (void) test_replace_replaces_with_nil_sets_callback_returns_original_string
+{
+    NSString* result = [RX(@".") replace:@"hi bud" withDetailsBlock:nil];
+    XCTAssertEqualObjects(result, @"hi bud", @"Result should be the original string.");
+}
 
 @end
