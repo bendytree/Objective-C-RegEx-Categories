@@ -1,15 +1,5 @@
 
 
-"dog frog".replace(/[a-z]+/, function(){ console.log(arguments); return "mog"; });
- => ["dog", 0, "dog frog"] 
- => "mog frog"
+[![Build Status](https://travis-ci.org/bendytree/Objective-C-RegEx-Categories)](https://travis-ci.org/bendytree/Objective-C-RegEx-Categories)
 
-
-"ab cd ef".match(/[a-z]([a-z])/)
- => ["ab", "b"]
- 
- 
-"ab cd ef".match(/[a-z]([a-z])/g)
- => ["ab", "cd", "ef"]
- 
 
