@@ -49,13 +49,36 @@
 
 
 
+/********************************************************/
+/******************* MATCH OBJECTS **********************/
+/********************************************************/
+
+/**
+ * RxMatch represents a single match. It contains the
+ * matched value, range, sub groups, and the original
+ * string.
+ */
+
+@interface RxMatch : NSObject
+@property (retain) NSString* value;    /* The substring that matched the expression. */
+@property (assign) NSRange   range;    /* The range of the original string that was matched. */
+@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
+@property (retain) NSString* original; /* The full original string that was matched against.  */
+@end
+
+
+@interface RxMatchGroup : NSObject
+@property (retain) NSString* value;
+@property (assign) NSRange range;
+@end
+
+
+
 
 
 /**
  * Extend NSRegularExpression.
  */
-
-@class RxMatch;
 
 @interface NSRegularExpression (RegexDummy)
 
@@ -387,20 +410,4 @@
 - (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx;
 
 @end
-
-
-
-@interface RxMatch : NSObject
-@property (retain) NSString* value;
-@property (assign) NSRange range;
-@property (retain) NSArray* groups;
-@property (retain) NSString* original;
-@end
-
-
-@interface RxMatchGroup : NSObject
-@property (retain) NSString* value;
-@property (assign) NSRange range;
-@end
-
 
