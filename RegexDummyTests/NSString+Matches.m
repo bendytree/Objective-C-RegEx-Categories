@@ -54,9 +54,4 @@
     XCTAssertEqualObjects(match.value, @"me@example.com", @"First match should be 'me@example.com'.");
 }
 
-- (void) test_travis_is_truthful
-{
-    XCTAssertEqualObjects(@"Dogs", @"Cats", @"Dogs is equal to cats.");
-}
-
 @end
