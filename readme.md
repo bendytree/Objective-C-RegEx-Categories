@@ -5,19 +5,14 @@
 
 This project is a collection of objective-c categories for NSRegularExpression and NSString that make regular expressions easier and more concise. For example:
 
-
-#### Using NSRegularExpression:
-
 ```objc
+//Using NSRegularExpression
 NSString* string = @"I have 2 dogs.";
 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
 NSTextCheckingResult *match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
 BOOL isMatch = match != nil;
-```
 
-#### Using this library:
-
-```objc
+// Using this library
 BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
 ```
 
