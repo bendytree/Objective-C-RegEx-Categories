@@ -1,3 +1,4 @@
 language: objective-c
 xcode_project: RegexDummy.xcodeproj
 xcode_scheme: RegexDummy
+xcode_sdk: iphonesimulator
