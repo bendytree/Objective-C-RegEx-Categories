@@ -1,4 +1,4 @@
 language: objective-c
-xcode_project: RegexDummy.xcodeproj
-xcode_scheme: RegexDummy
-xcode_sdk: iphonesimulator
+
+script: 
+- xctool -project RegexDummy.xcodeproj -scheme RegexDummy -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO clean build test -freshSimulator -freshInstall
