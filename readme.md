@@ -333,33 +333,33 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
 
 `RxMatch` and `RxMatchGroup` are objects that contain information about a match and its groups.
 
-		@interface RxMatch : NSObject
-		
-				/* The substring that matched the expression. */
-				@property (retain) NSString* value;    
-		
-				/* The range of the original string that was matched. */
-				@property (assign) NSRange   range;    
-		
-				/* Each object is an RxMatchGroup. */
-				@property (retain) NSArray*  groups;   
-		
-				/* The full original string that was matched against.  */
-				@property (retain) NSString* original; 
-		
-		@end
+```objc
+@interface RxMatch : NSObject
 
+	/* The substring that matched the expression. */
+	@property (retain) NSString* value;    
 
-		@interface RxMatchGroup : NSObject
+	/* The range of the original string that was matched. */
+	@property (assign) NSRange   range;    
+
+	/* Each object is an RxMatchGroup. */
+	@property (retain) NSArray*  groups;   
+
+	/* The full original string that was matched against.  */
+	@property (retain) NSString* original; 
+
+@end
+
+@interface RxMatchGroup : NSObject
+
+   /* The substring matched for the group. */
+	@property (retain) NSString* value;
+	
+   /* The range of the captured group, relative to the original string. */
+	@property (assign) NSRange range;
 		
-		    /* The substring matched for the group. */
-				@property (retain) NSString* value;
-				
-		    /* The range of the captured group, relative to the original string. */
-				@property (assign) NSRange range;
-				
-		@end
-
+@end
+```
 
 
 <a name="support"/>
