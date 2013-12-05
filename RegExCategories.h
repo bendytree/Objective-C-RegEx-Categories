@@ -35,13 +35,13 @@
 /********************************************************/
 
 /*
- * By default, Objective-C-Regex-Categories creates an alias for NSRegularExpression
+ * By default, we create an alias for NSRegularExpression
  * called `Rx` and creates a macro `RX()` for quick regex creation.
  *
  * If you don't want these macros, add the following statement
  * before you include this library:
  *
- * #define DisableObjective-C-Regex-CategoriesMacros
+ * #define DisableRegExCategoriesMacros
  */
 
 
@@ -52,7 +52,7 @@
  * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
  */
 
-#ifndef DisableObjectiveCRegexCategoriesMacros
+#ifndef DisableRegExCategoriesMacros
 #define Rx NSRegularExpression
 #endif
 
@@ -64,7 +64,7 @@
  * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
  */
 
-#ifndef DisableObjectiveCRegexCategoriesMacros
+#ifndef DisableRegExCategoriesMacros
 #define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
 #endif
 

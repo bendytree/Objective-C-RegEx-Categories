@@ -1,6 +1,28 @@
-# Overview
+# Introduction
 
-Here's a quick overview.
+This project makes regular expressions easy and concise in Objective-C.
+
+As of iOS4 (and OSX10.7), `NSRegularExpression` was built in to the Foundation framework. The syntax is somewhat cumbersome, so this library creates categories and macros to simplify regex usage. 
+
+Here is an example where four lines of code become one:
+
+```objc
+// Without this library
+NSString* string = @"I have 2 dogs.";
+NSRegularExpression *regex = [NSRegularExpression regular ExpressionWithPattern:@"\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
+NSTextCheckingResult *match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
+BOOL isMatch = match != nil;
+
+// With this library
+BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
+```
+
+**PRO TIP:** See the header ([RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)) for more details and examples.
+
+
+# Quick Examples
+
+Here's are some quick examples of how you might use the code.
 
 
 ```objc
@@ -43,156 +65,121 @@ NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* ma
 // result => @"2 3"
 ```
 
+
 # Macros and Aliases
 
-Objective-C-Regex-Categories creates an alias for NSRegularExpression called `Rx`:
-
+First off, we create an alias for NSRegularExpression named `Rx`. So instead of writing `NSRegularExpression` you can now use `Rx`. (this can be disabled - read on)
 
 ```objc
-//This:
+//this
 NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
 
-//can be written as any of these:
+//can be written as
 Rx* rx = [[Rx alloc] initWithPattern:@"\\d"];
-Rx* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
-NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\\d"];
 ```
 
-There's also a macro `RX()` for quick regex creation:
+We've also created a macro `RX()` for quick regex creation. Just pass a string and an `NSRegularExpression` object is created:
 
 ```objc
-//This:
+//this
 NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
 
-//can be written as:
+//can be written as
 Rx* rx = RX(@"\\d");
 ```
 
-These macros can be disabled by defining `DisableObjectiveCRegexCategoriesMacros` before you include the script. For example:
+These macros can be disabled by defining `DisableRegExCategoriesMacros` before you include the script. For example:
 
 ```objc
-#ifndef DisableObjectiveCRegexCategoriesMacros
-#define Rx NSRegularExpression
-#endif
+#define DisableRegExCategoriesMacros
+#inclue "RegExCategories.h"
 ```
 
 
+# Creation
+
+Here are a few convenient ways to create an `NSRegularExpression`.
 
 
-#Matching
+####Class Method - rx
+
+    Rx* rx = [Rx rx:@"\\d+"];
+
+####Class Method - ignore case
+
+    Rx* rx = [Rx rx:@"\\d+" ignoreCase:YES];
+
+####Class Method - with options
+
+    Rx* rx = [Rx rx:@"\\d+" options:NSRegularExpressionCaseInsensitive];
+
+####Init With Pattern
+
+    Rx* rx = [[Rx alloc] initWithPattern:@"\d+"];
+
+####String Extension
+
+	Rx* rx = [@"\\d+" toRx];
+
+####String Extension - ignore case
+
+	Rx* rx = [@"\\d+" toRxIgnoreCase:YES];
+
+####String Extension - with options
+
+	Rx* rx = [@"\\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
 
 
-/**
- * RxMatch represents a single match. It contains the
- * matched value, range, sub groups, and the original
- * string.
- */
+#Test If Match
 
-@interface RxMatch : NSObject
-@property (retain) NSString* value;    /* The substring that matched the expression. */
-@property (assign) NSRange   range;    /* The range of the original string that was matched. */
-@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
-@property (retain) NSString* original; /* The full original string that was matched against.  */
-@end
+####From NSRegularExpression
 
+    BOOL isMatch = [RX(@"\\d+") isMatch:@"Dog #1"];
+    // => true
 
-@interface RxMatchGroup : NSObject
-@property (retain) NSString* value;
-@property (assign) NSRange range;
-@end
+####From NSString
+
+    BOOL isMatch = [@"Dog #1" isMatch:RX(@"\\d+")];
+    // => true
 
 
+#Index Of Match
+
+####From NSRegularExpression
+
+    int index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
+    // => 4
+
+    int index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
+    // => -1
+
+####From NSString
+
+    int index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
+    // => 4
+
+    int index = [@"Buy a dog?" indexOf:RX(@"\\d+")];
+    // => -1
+
+
+#Split A String
+
+####From NSRegularExpression
+
+    NSArray* pieces = [RX(@"[ ,]") split:@"A dog,cat"];
+    // => @[@"A", @"dog", @"cat"]
+
+
+####From NSString
+
+    NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
+    // => @[@"A", @"dog", @"cat"]
+
+
+#Replace
 
 
 
-/**
- * Extend NSRegularExpression.
- */
-
-@interface NSRegularExpression (Objective-C-Regex-Categories)
-
-
-/*******************************************************/
-/******************* INITIALIZATION ********************/
-/*******************************************************/
-
-/**
- * Initialize an Rx object from a string.
- *
- * ie.
- * Rx* rx = [[Rx alloc] initWithString:@"\d+"];
- */
-
-- (NSRegularExpression*) initWithPattern:(NSString*)pattern;
-
-
-/**
- * Initialize an Rx object from a string.
- *
- * ie.
- * Rx* rx = [Rx rx:@"\d+"];
- */
-
-+ (NSRegularExpression*) rx:(NSString*)pattern;
-
-
-/**
- * Initialize an Rx object from a string. By default, NSRegularExpression
- * is case sensitive, but this signature allows you to change that.
- *
- * ie.
- * Rx* rx = [Rx rx:@"\d+" ignoreCase:YES];
- */
-
-+ (NSRegularExpression*) rx:(NSString*)pattern ignoreCase:(BOOL)ignoreCase;
-
-
-/**
- * Initialize an Rx object from a string and options.
- *
- * ie.
- * Rx* rx = [Rx rx:@"\d+" options:NSRegularExpressionCaseInsensitive];
- */
-
-+ (NSRegularExpression*) rx:(NSString*)pattern options:(NSRegularExpressionOptions)options;
-
-
-/*******************************************************/
-/********************** IS MATCH ***********************/
-/*******************************************************/
-
-/**
- * Returns true if the string matches the regex. May also
- * be called on NSString as [@"\d" isMatch:rx].
- *
- * ie.
- * Rx* rx = RX(@"\d+");
- * BOOL isMatch = [rx isMatch:@"Dog #1"]; // => true
- */
-
-- (BOOL) isMatch:(NSString*)matchee;
-
-
-/**
- * Returns the index of the first match of the passed string.
- *
- * ie.
- * int i = [RX(@"\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
- */
-
-- (int) indexOf:(NSString*)str;
-
-
-/**
- * Splits a string using the regex to identify delimeters. Returns
- * an NSArray of NSStrings.
- *
- * ie.
- * NSArray* pieces = [RX(@"[ ,]") split:@"A dog,cat"];
- *  => @[@"A", @"dog", @"cat"]
- */
-
-- (NSArray*) split:(NSString*)str;
 
 
 /**
@@ -282,44 +269,7 @@ These macros can be disabled by defining `DisableObjectiveCRegexCategoriesMacros
 
 
 
-/**
- * A category on NSString to make it easy to use
- * Rx in simple operations.
- */
 
-@interface NSString (Objective-C-Regex-Categories)
-
-
-/**
- * Initialize an NSRegularExpression object from a string.
- *
- * ie.
- * NSRegularExpression* rx = [@"\d+" toRx];
- */
-
-- (NSRegularExpression*) toRx;
-
-
-/**
- * Initialize an NSRegularExpression object from a string with
- * a flag denoting case-sensitivity. By default, NSRegularExpression
- * is case sensitive.
- *
- * ie.
- * NSRegularExpression* rx = [@"\d+" toRxIgnoreCase:YES];
- */
-
-- (NSRegularExpression*) toRxIgnoreCase:(BOOL)ignoreCase;
-
-
-/**
- * Initialize an NSRegularExpression object from a string with options.
- *
- * ie.
- * NSRegularExpression* rx = [@"\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
- */
-
-- (NSRegularExpression*) toRxWithOptions:(NSRegularExpressionOptions)options;
 
 
 /**
@@ -440,3 +390,25 @@ These macros can be disabled by defining `DisableObjectiveCRegexCategoriesMacros
 
 @end
 
+
+# Match Objects
+
+
+/**
+ * RxMatch represents a single match. It contains the
+ * matched value, range, sub groups, and the original
+ * string.
+ */
+
+@interface RxMatch : NSObject
+@property (retain) NSString* value;    /* The substring that matched the expression. */
+@property (assign) NSRange   range;    /* The range of the original string that was matched. */
+@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
+@property (retain) NSString* original; /* The full original string that was matched against.  */
+@end
+
+
+@interface RxMatchGroup : NSObject
+@property (retain) NSString* value;
+@property (assign) NSRange range;
+@end
