@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		BC54F65E184B794200888C73 /* NSString+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Matches.m"; sourceTree = "<group>"; };
-		BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Matches.m"; sourceTree = "<group>"; };
+		BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSRegularExpression+Matches.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC7CC7CF1848F63D007FCB6B /* Objective-C-Regex-Categories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Objective-C-Regex-Categories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7D21848F63E007FCB6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CC7D41848F63E007FCB6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };

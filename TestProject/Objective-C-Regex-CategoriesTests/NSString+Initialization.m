@@ -5,7 +5,7 @@
 
 
 #import <XCTest/XCTest.h>
-#import "Objective-C-Regex-Categories.h"
+#import "RegExCategories.h"
 
 @interface NSString_Initialization : XCTestCase @end
 
