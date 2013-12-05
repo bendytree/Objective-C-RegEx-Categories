@@ -1,4 +1,3 @@
-
 # Objective-C RegEx Categories
 
 
@@ -7,15 +6,16 @@
  - [Introduction](#introduction)
  - [Getting Started](#gettingstarted)
  - [Quick Examples](#examples)
- - [Macros](#macros)
- - [Creation](#creation)
- - [Test If Match](#ismatch)
- - [Index Of Match](#indexof)
- - [Split](#split)
- - [First Match](#firstmatch)
- - [Matches](#matches)
- - [Replace](#replace)
- - [Match Objects](#matchobjects)
+ - [Documentation](#documentation)
+   - [Macros](#macros)
+   - [Creation](#creation)
+   - [Test If Match](#ismatch)
+   - [Index Of Match](#indexof)
+   - [Split](#split)
+   - [First Match](#firstmatch)
+   - [Matches](#matches)
+   - [Replace](#replace)
+   - [Match Objects](#matchobjects)
  - [Support](#support)
  - [Licensing](#licensing)
  - [Testing](#testing)
@@ -68,7 +68,7 @@ You also need to have  [ARC](https://developer.apple.com/library/ios/documentati
 
 
 <a name="examples"/>
-# Quick Examples
+## Quick Examples
 
 Here's are some quick examples of how you might use the code.
 
@@ -114,9 +114,11 @@ NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* ma
 ```
 
 
+<a name="documentation"/>
+## Documentation
 
 <a name="macros"/>
-# Macros
+## Macros
 
 First off, we create an alias for NSRegularExpression named `Rx`. So instead of writing `NSRegularExpression` you can now use `Rx`. (this can be disabled - read on)
 
@@ -146,58 +148,58 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 ```
 
 <a name="creation"/>
-# Creation
+## Creation
 
 Here are a few convenient ways to create an `NSRegularExpression`.
 
 
-####Class Method - rx
+######Class Method - rx
 
     Rx* rx = [Rx rx:@"\\d+"];
 
-####Class Method - ignore case
+######Class Method - ignore case
 
     Rx* rx = [Rx rx:@"\\d+" ignoreCase:YES];
 
-####Class Method - with options
+######Class Method - with options
 
     Rx* rx = [Rx rx:@"\\d+" options:NSRegularExpressionCaseInsensitive];
 
-####Init With Pattern
+######Init With Pattern
 
     Rx* rx = [[Rx alloc] initWithPattern:@"\d+"];
 
-####String Extension
+######String Extension
 
 	Rx* rx = [@"\\d+" toRx];
 
-####String Extension - ignore case
+######String Extension - ignore case
 
 	Rx* rx = [@"\\d+" toRxIgnoreCase:YES];
 
-####String Extension - with options
+######String Extension - with options
 
 	Rx* rx = [@"\\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
 
 
 <a name="ismatch"/>
-#Test If Match
+##Test If Match
 
-####From NSRegularExpression
+######From NSRegularExpression
 
     BOOL isMatch = [RX(@"\\d+") isMatch:@"Dog #1"];
     // => true
 
-####From NSString
+######From NSString
 
     BOOL isMatch = [@"Dog #1" isMatch:RX(@"\\d+")];
     // => true
 
 
 <a name="indexof"/>
-#Index Of Match
+##Index Of Match
 
-####From NSRegularExpression
+######From NSRegularExpression
 
     int index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
     // => 4
@@ -205,7 +207,7 @@ Here are a few convenient ways to create an `NSRegularExpression`.
     int index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
     // => -1
 
-####From NSString
+######From NSString
 
     int index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
     // => 4
@@ -214,15 +216,15 @@ Here are a few convenient ways to create an `NSRegularExpression`.
     // => -1
 
 <a name="split"/>
-#Split A String
+##Split A String
 
-####From NSRegularExpression
+######From NSRegularExpression
 
     NSArray* pieces = [RX(@"[ ,]") split:@"A dog,cat"];
     // => @[@"A", @"dog", @"cat"]
 
 
-####From NSString
+######From NSString
 
     NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
     // => @[@"A", @"dog", @"cat"]
@@ -230,18 +232,18 @@ Here are a few convenient ways to create an `NSRegularExpression`.
 
 
 <a name="firstmatch"/>
-#First Match
+##First Match
 
 
 
 
 <a name="matches"/>
-#Matches
+##Matches
 
 
 
 <a name="replace"/>
-#Replace
+##Replace
 
 
 
@@ -457,7 +459,7 @@ Here are a few convenient ways to create an `NSRegularExpression`.
 
 
 <a name="matchobjects"/>
-# Match Objects
+## Match Objects
 
 
 /**
