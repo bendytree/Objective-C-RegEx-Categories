@@ -22,15 +22,15 @@ This library has no dependencies and works for iOS4+ and OSX v10.7+.
 
 To install it, just copy these two files into your project:
 
- - Objective-C-Regex-Categories.h
- - Objective-C-Regex-Categories.m
+ - RegExCategories.h
+ - RegExCategories.m
 
 You may want to add it to your Prefix.pch so that is is available across your code base.
 
 ```objc
 #ifdef __OBJC__
     /* ...other references... */
-    #import "Objective-C-Regex-Categories.h"
+    #import "RegExCategories.h"
 #endif
 ```
 

@@ -1,5 +1,5 @@
 //
-//  Objective-C-Regex-Categories.m
+//  RegExCategories.m
 //
 //  https://github.com/bendytree/Objective-C-RegEx-Categories
 //
@@ -27,7 +27,7 @@
 //  SOFTWARE.
 //
 
-#import "Objective-C-Regex-Categories.h"
+#import "RegExCategories.h"
 
 @implementation NSRegularExpression (ObjectiveCRegexCategories)
 

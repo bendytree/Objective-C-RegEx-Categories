@@ -1,5 +1,5 @@
 //
-//  Objective-C-Regex-Categories.h
+//  RegExCategories.h
 //
 //  https://github.com/bendytree/Objective-C-RegEx-Categories
 //
