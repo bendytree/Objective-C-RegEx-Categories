@@ -1,3 +1,13 @@
+#Table of Contents
+
+ - Introduction
+ - Quick Examples
+ - Macros
+ - Creation
+ - Test If Match
+ - Index Of Match
+
+
 # Introduction
 
 This project makes regular expressions easy and concise in Objective-C.
@@ -66,7 +76,7 @@ NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* ma
 ```
 
 
-# Macros and Aliases
+# Macros
 
 First off, we create an alias for NSRegularExpression named `Rx`. So instead of writing `NSRegularExpression` you can now use `Rx`. (this can be disabled - read on)
 
