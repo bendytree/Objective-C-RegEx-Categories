@@ -22,19 +22,19 @@ This library has no dependencies and works for iOS4+ and OSX v10.7+.
 
 To install it, just copy these two files into your project:
 
- - RegexDummy.h
- - RegexDummy.m
+ - Objective-C-Regex-Categories.h
+ - Objective-C-Regex-Categories.m
 
 You may want to add it to your Prefix.pch so that is is available across your code base.
 
 ```objc
 #ifdef __OBJC__
     /* ...other references... */
-    #import "RegexDummy.h"
+    #import "Objective-C-Regex-Categories.h"
 #endif
 ```
 
-You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `RegexDummy.m` under Targets > Build Phases > Compile Sources ([more info here](http://stackoverflow.com/a/19925947/193896)). 
+You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `Objective-C-Regex-Categories.m` under Targets > Build Phases > Compile Sources ([more info here](http://stackoverflow.com/a/19925947/193896)). 
 
 
 ## Examples

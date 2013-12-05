@@ -43,7 +43,7 @@ Here's a quick overview.
 
 # Macros and Aliases
 
-RegexDummy creates an alias for NSRegularExpression called `Rx`:
+Objective-C-Regex-Categories creates an alias for NSRegularExpression called `Rx`:
 
     //This:
     NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
@@ -61,9 +61,9 @@ There's also a macro `RX()` for quick regex creation:
     //can be written as:
     Rx* rx = RX(@"\\d");
 
-These macros can be disabled by defining `DisableRegexDummyMacros` before you include the script. For example:
+These macros can be disabled by defining `DisableObjective-C-Regex-CategoriesMacros` before you include the script. For example:
 
-    #ifndef DisableRegexDummyMacros
+    #ifndef DisableObjective-C-Regex-CategoriesMacros
     #define Rx NSRegularExpression
     #endif
 
@@ -100,7 +100,7 @@ These macros can be disabled by defining `DisableRegexDummyMacros` before you in
  * Extend NSRegularExpression.
  */
 
-@interface NSRegularExpression (RegexDummy)
+@interface NSRegularExpression (Objective-C-Regex-Categories)
 
 
 /*******************************************************/
@@ -278,7 +278,7 @@ These macros can be disabled by defining `DisableRegexDummyMacros` before you in
  * Rx in simple operations.
  */
 
-@interface NSString (RegexDummy)
+@interface NSString (Objective-C-Regex-Categories)
 
 
 /**
