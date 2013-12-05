@@ -2,70 +2,79 @@
 
 Here's a quick overview.
 
-    //Create an NSRegularExpression
-    Rx* rx = RX(@"\\d");
-    Rx* rx = [Rx rx:@"\\d"];
-    Rx* rx = [Rx rx:@"\\d" ignoreCase:YES];
 
-    //Test if a string matches
-    BOOL isMatch = [@"2345" isMatch:RX(@"^\\d+$")];
+```objc
+//Create an NSRegularExpression
+Rx* rx = RX(@"\\d");
+Rx* rx = [Rx rx:@"\\d"];
+Rx* rx = [Rx rx:@"\\d" ignoreCase:YES];
 
-    //Get first match
-    NSString* age = [@"My dog is 3." firstMatch:RX(@"\\d+")];
+//Test if a string matches
+BOOL isMatch = [@"2345" isMatch:RX(@"^\\d+$")];
 
-    //Get matches as a string array
-    NSString* words = [@"Hey pal" firstMatch:RX(@"\\w+")];
-    // words => @[ @"Hey", @"pal" ]
+//Get first match
+NSString* age = [@"My dog is 3." firstMatch:RX(@"\\d+")];
 
-    //Get first match with details
-    RxMatch* match = [@"12.34, 56.78" firstMatchWithDetails:RX(@"\\d+([.]\\d+)")];
-    // match.value => @"12.34"
-    // match.range => NSRangeMake(0, 5);
-    // match.original => @"12.34, 56.78";
-    // match.groups => @[ RxMatchGroup, RxMatchGroup ];
+//Get matches as a string array
+NSString* words = [@"Hey pal" firstMatch:RX(@"\\w+")];
+// words => @[ @"Hey", @"pal" ]
 
-    //Replace with a template string
-    NSString* result = [@"My dog is 12." replace:RX(@"\\d+") with:@"old"];
-    // result => @"My dog is old."
+//Get first match with details
+RxMatch* match = [@"12.34, 56.78" firstMatchWithDetails:RX(@"\\d+([.]\\d+)")];
+// match.value => @"12.34"
+// match.range => NSRangeMake(0, 5);
+// match.original => @"12.34, 56.78";
+// match.groups => @[ RxMatchGroup, RxMatchGroup ];
 
-    //Replace with a block
-    NSString* result = [RX(@"\\w+") replace:@"hi bud" withBlock:^(NSString* match){
-      return [NSString stringWithFormat:@"%i", match.length];
-    }];
-    // result => @"2 3"
+//Replace with a template string
+NSString* result = [@"My dog is 12." replace:RX(@"\\d+") with:@"old"];
+// result => @"My dog is old."
 
-    //Replace with a block that has the match details
-    NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* match){
-      return [NSString stringWithFormat:@"%i", match.value.length];
-    }];
-    // result => @"2 3"
+//Replace with a block
+NSString* result = [RX(@"\\w+") replace:@"hi bud" withBlock:^(NSString* match){
+  return [NSString stringWithFormat:@"%i", match.length];
+}];
+// result => @"2 3"
 
+//Replace with a block that has the match details
+NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* match){
+  return [NSString stringWithFormat:@"%i", match.value.length];
+}];
+// result => @"2 3"
+```
 
 # Macros and Aliases
 
 Objective-C-Regex-Categories creates an alias for NSRegularExpression called `Rx`:
 
-    //This:
-    NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
 
-    //can be written as any of these:
-    Rx* rx = [[Rx alloc] initWithPattern:@"\\d"];
-    Rx* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
-    NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\\d"];
+```objc
+//This:
+NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
+
+//can be written as any of these:
+Rx* rx = [[Rx alloc] initWithPattern:@"\\d"];
+Rx* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
+NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\\d"];
+```
 
 There's also a macro `RX()` for quick regex creation:
 
-    //This:
-    NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
+```objc
+//This:
+NSRegularExpression* rx = [[NSRegularExpression alloc] initWithPattern:@"\\d"];
 
-    //can be written as:
-    Rx* rx = RX(@"\\d");
+//can be written as:
+Rx* rx = RX(@"\\d");
+```
 
-These macros can be disabled by defining `DisableObjective-C-Regex-CategoriesMacros` before you include the script. For example:
+These macros can be disabled by defining `DisableObjectiveCRegexCategoriesMacros` before you include the script. For example:
 
-    #ifndef DisableObjective-C-Regex-CategoriesMacros
-    #define Rx NSRegularExpression
-    #endif
+```objc
+#ifndef DisableObjectiveCRegexCategoriesMacros
+#define Rx NSRegularExpression
+#endif
+```
 
 
 

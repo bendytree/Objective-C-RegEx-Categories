@@ -14,8 +14,8 @@
 
 - (void) test_indexOf_can_be_called_on_an_NSString
 {
-    unsigned long i = [@"You 2 can have 3 cows." indexOf:RX(@"\\d")];
-    XCTAssertEqual(i, 4U, @"Expected to match index 4.");
+    int i = [@"You 2 can have 3 cows." indexOf:RX(@"\\d")];
+    XCTAssertEqual(i, 4, @"Expected to match index 4.");
 }
 
 @end
