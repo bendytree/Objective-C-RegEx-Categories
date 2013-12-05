@@ -34,7 +34,6 @@
 		BCCD4869185009E80038ADCB /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCCD4864185009E80038ADCB /* LICENSE.txt */; };
 		BCCD486A185009E80038ADCB /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD4866185009E80038ADCB /* RegExCategories.m */; };
 		BCCD486B185009E80038ADCB /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BCCD4867185009E80038ADCB /* readme.md */; };
-		BCCD486D1850278E0038ADCB /* Objective-C-Regex-Categories.podfile in Resources */ = {isa = PBXBuildFile; fileRef = BCCD486C1850278E0038ADCB /* Objective-C-Regex-Categories.podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		BCCD4865185009E80038ADCB /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegExCategories.h; path = ../RegExCategories.h; sourceTree = "<group>"; };
 		BCCD4866185009E80038ADCB /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegExCategories.m; path = ../RegExCategories.m; sourceTree = "<group>"; };
 		BCCD4867185009E80038ADCB /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
-		BCCD486C1850278E0038ADCB /* Objective-C-Regex-Categories.podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Objective-C-Regex-Categories.podfile"; path = "../Objective-C-Regex-Categories.podfile"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +108,6 @@
 		BC7CC7C61848F63D007FCB6B = {
 			isa = PBXGroup;
 			children = (
-				BCCD486C1850278E0038ADCB /* Objective-C-Regex-Categories.podfile */,
 				BCCD4863185009E80038ADCB /* docs.md */,
 				BCCD4864185009E80038ADCB /* LICENSE.txt */,
 				BCCD4865185009E80038ADCB /* RegExCategories.h */,
@@ -270,7 +267,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCCD486D1850278E0038ADCB /* Objective-C-Regex-Categories.podfile in Resources */,
 				BCCD4869185009E80038ADCB /* LICENSE.txt in Resources */,
 				BC7CC7DD1848F63E007FCB6B /* InfoPlist.strings in Resources */,
 				BCCD486B185009E80038ADCB /* readme.md in Resources */,
