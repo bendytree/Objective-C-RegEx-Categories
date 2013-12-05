@@ -59,7 +59,7 @@
 		BC7CC7E01848F63E007FCB6B /* Objective-C-Regex-Categories-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objective-C-Regex-Categories-Prefix.pch"; sourceTree = "<group>"; };
 		BC7CC7E11848F63E007FCB6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC7CC7E21848F63E007FCB6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Objective-C-Regex-CategoriesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-Categories-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Objective-C-Regex-Categories-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7EB1848F63E007FCB6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BC7CC7F31848F63E007FCB6B /* Objective-C-Regex-CategoriesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Objective-C-Regex-CategoriesTests-Info.plist"; sourceTree = "<group>"; };
 		BC7CC7F51848F63E007FCB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7CC7CF1848F63D007FCB6B /* Objective-C-Regex-Categories.app */,
-				BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */,
+				BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-Categories-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			);
 			name = "Objective-C-Regex-Categories-Tests";
 			productName = "Objective-C-Regex-CategoriesTests";
-			productReference = BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */;
+			productReference = BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-Categories-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

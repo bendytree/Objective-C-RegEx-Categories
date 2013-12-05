@@ -15,7 +15,7 @@
    - [First Match](#firstmatch)
    - [Matches](#matches)
    - [Replace](#replace)
-   - [Match Objects](#matchobjects)
+   - [RxMatch Objects](#rxmatch)
  - [Support](#support)
  - [Licensing](#licensing)
  - [Testing](#testing)
@@ -26,7 +26,7 @@
 
 This project makes regular expressions easy in Objective-C.
 
-As of iOS4 (and OSX10.7), `NSRegularExpression` was built in to the Foundation framework. The syntax is somewhat cumbersome, so this library creates categories and macros to simplify usage of `NSRegularExpression`. 
+As of iOS 4 (and OSX 10.7), [`NSRegularExpression`](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html) was built-in to [Foundation.framework](https://developer.apple.com/library/Mac/DOCUMENTATION/Cocoa/Reference/Foundation/ObjC_classic/_index.html#//apple_ref/doc/uid/20001091). The syntax is somewhat cumbersome, so this library creates categories and macros to simplify usage of `NSRegularExpression`. 
 
 Here is an example where four lines of code become one:
 
@@ -41,12 +41,12 @@ BOOL isMatch = match != nil;
 BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
 ```
 
-**PRO TIP:** Refer to the header ([RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)) for more details and examples.
+**TIP:** Refer to the header ([RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)) for more details and examples.
 
 <a name="gettingstarted"/>
 ## Getting Started
 
-This library has no dependencies and works for iOS4+ and OSX v10.7+.
+This library has no dependencies and works for iOS 4+ and OSX 10.7+.
 
 To install it, just copy these two files into your project:
 
@@ -70,7 +70,7 @@ You also need to have  [ARC](https://developer.apple.com/library/ios/documentati
 <a name="examples"/>
 ## Quick Examples
 
-Here's are some quick examples of how you might use the code.
+Here are some quick examples of how you might use the code.
 
 
 ```objc
@@ -152,7 +152,6 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 
 Here are a few convenient ways to create an `NSRegularExpression`.
 
-
 ######Class Method - rx
 
     Rx* rx = [Rx rx:@"\\d+"];
@@ -185,6 +184,8 @@ Here are a few convenient ways to create an `NSRegularExpression`.
 <a name="ismatch"/>
 ##Test If Match
 
+Tests whether a regular expression matches a string.
+
 ######From NSRegularExpression
 
     BOOL isMatch = [RX(@"\\d+") isMatch:@"Dog #1"];
@@ -198,6 +199,8 @@ Here are a few convenient ways to create an `NSRegularExpression`.
 
 <a name="indexof"/>
 ##Index Of Match
+
+Get the character index of the first match. If no match is found, then `-1`.
 
 ######From NSRegularExpression
 
@@ -215,8 +218,11 @@ Here are a few convenient ways to create an `NSRegularExpression`.
     int index = [@"Buy a dog?" indexOf:RX(@"\\d+")];
     // => -1
 
+
 <a name="split"/>
 ##Split A String
+
+Split an NSString using a regex as the delimiter. The result is an NSArray of NSString objects.
 
 ######From NSRegularExpression
 
@@ -229,11 +235,42 @@ Here are a few convenient ways to create an `NSRegularExpression`.
     NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
     // => @[@"A", @"dog", @"cat"]
 
+Empty results are not removed. For example:
+
+    NSArray* pieces = [@",a,,b," split:RX(@"[,]")];
+    // => @[@"", @"a", @"", @"b",@""]
 
 
 <a name="firstmatch"/>
 ##First Match
 
+First match returns the first match as an `NSString`. If no match is found, nil is returned.
+
+###### First Match from NSString
+
+    NSString* match = [@"55 or 99 spiders" firstMatch:RX(@"\\d+")];
+    // => @"55"
+
+    NSString* match = [@"A lot of spiders" firstMatch:RX(@"\\d+")];
+    // => nil
+
+###### First Match from NSRegularExpression
+
+    NSString* match = [RX(@"\\d+") firstMatch:@"55 or 99 spiders"];
+    // => @"55"
+
+###### First Match With Details (from NSString or NSRegularExpression)
+
+If you want more details about the match (such as the range or captured groups), then use match with details. It returns an [RxMatch](#rxmatch) object if a match is found, otherwise nil.
+
+    RxMatch* match = [@"55 or 99 spiders" firstMatchWithDetails:RX(@"\\d+")];
+    // => { value: @"55", range:NSRangeMake(0, 2), groups:[RxMatchGroup, ...] }
+
+    RxMatch* match = [@"A lot of spiders" firstMatchWithDetails:RX(@"\\d+")];
+    // => nil
+
+    RxMatch* match = [RX(@"\\d+") firstMatchWithDetails:@"55 or 99 spiders"];
+    // => { value: @"55", range:NSRangeMake(0, 2), groups:[RxMatchGroup, ...] }
 
 
 
@@ -241,245 +278,87 @@ Here are a few convenient ways to create an `NSRegularExpression`.
 ##Matches
 
 
+###### Matches (from NSString or NSRegularExpression)
+
+Matches returns all matches as an `NSArray`, each as an `NSString`. If no matches are found, the `NSArray` is empty.
+
+    NSArray* matches = [@"55 or 99 spiders" matches:RX(@"\\d+")];
+    // => @[ @"55", @"99" ]
+
+    NSArray* matches = [RX(@"\\d+") matches:@"55 or 99 spiders"];
+    // => @[ @"55", @"99" ]
+
+
+###### Matches With Details (from NSString or NSRegularExpression)
+
+Matches with details returns all matches as an `NSArray``, each object is an [RxMatch](#rxmatch) object.
+
+    NSArray* matches = [@"55 or 99 spiders" matchesWithDetails:RX(@"\\d+")];
+    // => @[ RxMatch, RxMatch ]
+
+    NSArray* matches = [RX(@"\\d+") matchesWithDetails:@"55 or 99 spiders"];
+    // => @[ RxMatch, RxMatch ]
+
 
 <a name="replace"/>
 ##Replace
 
+###### Replace With Template
 
+Replace allows you to replace matched substrings with a templated string.
 
+    NSString* result = [RX(@"ruf+") replace:@"ruf ruff!" with:@"meow"];
+    // => @"meow meow!"
 
+###### Replace With Block
 
-/**
- * Replaces all occurances in a string with a replacement string.
- *
- * ie.
- * NSString* result = [RX(@"ruf+") replace:@"ruf ruff!" with:@"meow"];
- *  => @"meow meow!"
- */
+Replace with block lets you pass an objective-c block that returns the replacement `NSString`. The block receives an `NSString` which is the matched substring.
 
-- (NSString*) replace:(NSString*)string with:(NSString*)replacement;
+    NSString* result = [RX(@"[A-Z]+") replace:@"i love COW" withBlock:^(NSString*){ return @"lamp"; }];
+    // => @"i love lamp"
 
 
-/**
- * Replaces all occurances of a regex using a block. The block receives the match
- * and should return the replacement.
- *
- * ie.
- * NSString* result = [RX(@"[A-Z]+") replace:@"i love COW" withBlock:^(NSString*){ return @"lamp"; }];
- *  => @"i love lamp"
- */
+###### Replace With Details Block 
 
-- (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer;
+Similar to replace with block, but this block receives an [RxMatch](#rxmatch) for each match. This gives you details about the match such as captured groups.
 
+    NSString* result = [RX(@"\\w+") replace:@"two three" withDetailsBlock:^(RxMatch* match){ 
+	    return [NSString stringWithFormat:@"%i", match.value.length];
+	  }];
+    // => @"3 5"
 
-/**
- * Replaces all occurances of a regex using a block. The block receives a RxMatch object
- * that contains all the details of the match and should return a string
- * which is what the match is replaced with.
- *
- * ie.
- * NSString* result = [RX(@"\\w+") replace:@"hi bud" withBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
- *  => @"2 3"
- */
 
-- (NSString*) replace:(NSString *)string withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
+<a name="rxmatch"/>
+## RxMatch Objects
 
+`RxMatch` and `RxMatchGroup` are objects that contain information about a match and its groups.
 
-/**
- * Returns an array of matched root strings with no other match information.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSArray* matches = [RX(@"\\w+[@]\\w+[.](\\w+)") matches:str];
- *  => @[ @"me@example.com", @"you@example.com" ]
- */
+		@interface RxMatch : NSObject
+		
+				/* The substring that matched the expression. */
+				@property (retain) NSString* value;    
+		
+				/* The range of the original string that was matched. */
+				@property (assign) NSRange   range;    
+		
+				/* Each object is an RxMatchGroup. */
+				@property (retain) NSArray*  groups;   
+		
+				/* The full original string that was matched against.  */
+				@property (retain) NSString* original; 
+		
+		@end
 
-- (NSArray*) matches:(NSString*)str;
 
-
-/**
- * Returns a string which is the first match of the NSRegularExpression.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSString* match = [RX(@"\\w+[@]\\w+[.](\\w+)") firstMatch:str];
- *  => @"me@example.com"
- */
-
-- (NSString*) firstMatch:(NSString*)str;
-
-
-/**
- * Returns an NSArray of RxMatch* objects. Each match contains the matched
- * value, range, groups, etc.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
- */
-
-- (NSArray*) matchesWithDetails:(NSString*)str;
-
-
-/**
- * Returns the first match as an RxMatch* object.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * Rx* rx = RX(@"\\w+[@]\\w+[.](\\w+)");
- * RxMatch* match = [rx firstMatchWithDetails:str];
- */
-
-- (RxMatch*) firstMatchWithDetails:(NSString*)str;
-
-@end
-
-
-
-
-
-
-/**
- * Returns true if the string matches the regex. May also
- * be called as on Rx as [rx isMatch:@"some string"].
- *
- * ie.
- * BOOL isMatch = [@"Dog #1" isMatch:RX(@"\d+")]; // => true
- */
-
-- (BOOL) isMatch:(NSRegularExpression*)rx;
-
-
-/**
- * Returns the index of the first match according to
- * the regex passed in.
- *
- * ie.
- * int i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\d+")]; // => 4
- */
-
-- (int) indexOf:(NSRegularExpression*)rx;
-
-
-/**
- * Splits a string using the regex to identify delimeters. Returns
- * an NSArray of NSStrings.
- *
- * ie.
- * NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
- *  => @[@"A", @"dog", @"cat"]
- */
-
-- (NSArray*) split:(NSRegularExpression*)rx;
-
-
-/**
- * Replaces all occurances of a regex with a replacement string.
- *
- * ie.
- * NSString* result = [@"ruf ruff!" replace:RX(@"ruf+") with:@"meow"];
- *  => @"meow meow!"
- */
-
-- (NSString*) replace:(NSRegularExpression*)rx with:(NSString*)replacement;
-
-
-/**
- * Replaces all occurances of a regex using a block. The block receives the match
- * and should return the replacement.
- *
- * ie.
- * NSString* result = [@"i love COW" replace:RX(@"[A-Z]+") withBlock:^(NSString*){ return @"lamp"; }];
- *  => @"i love lamp"
- */
-
-- (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer;
-
-
-/**
- * Replaces all occurances of a regex using a block. The block receives an RxMatch
- * object which contains all of the details for each match and should return a string
- * which is what the match is replaced with.
- *
- * ie.
- * NSString* result = [@"hi bud" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
- *  => @"2 3"
- */
-
-- (NSString*) replace:(NSRegularExpression *)rx withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
-
-
-/**
- * Returns an array of matched root strings with no other match information.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSArray* matches = [str matches:RX(@"\\w+[@]\\w+[.](\\w+)")];
- *  => @[ @"me@example.com", @"you@example.com" ]
- */
-
-- (NSArray*) matches:(NSRegularExpression*)rx;
-
-
-/**
- * Returns a string which is the first match of the NSRegularExpression.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSString* match = [str firstMatch:RX(@"\\w+[@]\\w+[.](\\w+)")];
- *  => @"me@example.com"
- */
-
-- (NSString*) firstMatch:(NSRegularExpression*)rx;
-
-
-/**
- * Returns an NSArray of RxMatch* objects. Each match contains the matched
- * value, range, groups, etc.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
- */
-
-- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx;
-
-
-/**
- * Returns an the first match as an RxMatch* object.
- *
- * ie.
- * NSString* str = @"My email is me@example.com and yours is you@example.com";
- * RxMatch* match = [str firstMatchWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
- */
-
-- (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx;
-
-@end
-
-
-<a name="matchobjects"/>
-## Match Objects
-
-
-/**
- * RxMatch represents a single match. It contains the
- * matched value, range, sub groups, and the original
- * string.
- */
-
-@interface RxMatch : NSObject
-@property (retain) NSString* value;    /* The substring that matched the expression. */
-@property (assign) NSRange   range;    /* The range of the original string that was matched. */
-@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
-@property (retain) NSString* original; /* The full original string that was matched against.  */
-@end
-
-
-@interface RxMatchGroup : NSObject
-@property (retain) NSString* value;
-@property (assign) NSRange range;
-@end
+		@interface RxMatchGroup : NSObject
+		
+		    /* The substring matched for the group. */
+				@property (retain) NSString* value;
+				
+		    /* The range of the captured group, relative to the original string. */
+				@property (assign) NSRange range;
+				
+		@end
 
 
 
