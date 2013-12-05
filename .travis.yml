@@ -1,4 +1,4 @@
 language: objective-c
 
 script: 
-- xctool -project Objective-C-Regex-Categories.xcodeproj -scheme Objective-C-Regex-Categories -sdk iphonesimulator clean build test -freshSimulator -freshInstall
+- xctool -project TestProject/Objective-C-Regex-Categories.xcodeproj -scheme Objective-C-Regex-Categories -sdk iphonesimulator clean build test -freshSimulator -freshInstall
