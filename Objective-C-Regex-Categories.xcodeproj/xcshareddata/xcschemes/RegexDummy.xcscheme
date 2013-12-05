@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC7CC7CE1848F63D007FCB6B"
-               BuildableName = "RegexDummy.app"
-               BlueprintName = "RegexDummy"
-               ReferencedContainer = "container:RegexDummy.xcodeproj">
+               BuildableName = "Objective-C-Regex-Categories.app"
+               BlueprintName = "Objective-C-Regex-Categories"
+               ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC7CC7E91848F63E007FCB6B"
-               BuildableName = "RegexDummyTests.xctest"
-               BlueprintName = "RegexDummyTests"
-               ReferencedContainer = "container:RegexDummy.xcodeproj">
+               BuildableName = "Objective-C-Regex-CategoriesTests.xctest"
+               BlueprintName = "Objective-C-Regex-CategoriesTests"
+               ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC7CC7E91848F63E007FCB6B"
-               BuildableName = "RegexDummyTests.xctest"
-               BlueprintName = "RegexDummyTests"
-               ReferencedContainer = "container:RegexDummy.xcodeproj">
+               BuildableName = "Objective-C-Regex-CategoriesTests.xctest"
+               BlueprintName = "Objective-C-Regex-CategoriesTests"
+               ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC7CC7CE1848F63D007FCB6B"
-            BuildableName = "RegexDummy.app"
-            BlueprintName = "RegexDummy"
-            ReferencedContainer = "container:RegexDummy.xcodeproj">
+            BuildableName = "Objective-C-Regex-Categories.app"
+            BlueprintName = "Objective-C-Regex-Categories"
+            ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC7CC7CE1848F63D007FCB6B"
-            BuildableName = "RegexDummy.app"
-            BlueprintName = "RegexDummy"
-            ReferencedContainer = "container:RegexDummy.xcodeproj">
+            BuildableName = "Objective-C-Regex-Categories.app"
+            BlueprintName = "Objective-C-Regex-Categories"
+            ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC7CC7CE1848F63D007FCB6B"
-            BuildableName = "RegexDummy.app"
-            BlueprintName = "RegexDummy"
-            ReferencedContainer = "container:RegexDummy.xcodeproj">
+            BuildableName = "Objective-C-Regex-Categories.app"
+            BlueprintName = "Objective-C-Regex-Categories"
+            ReferencedContainer = "container:Objective-C-Regex-Categories.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

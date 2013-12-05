@@ -1,9 +1,30 @@
 //
-//  RegexDummy.h
-//  RegexDummy
+//  Objective-C-Regex-Categories.h
 //
-//  Created by Joshua Wright on 11/29/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  https://github.com/bendytree/Objective-C-RegEx-Categories
+//
+//
+//  The MIT License (MIT)
+// 
+//  Copyright (c) 2013 Josh Wright <@BendyTree>
+// 
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+// 
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+// 
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,13 +35,13 @@
 /********************************************************/
 
 /*
- * By default, RegexDummy creates an alias for NSRegularExpression
+ * By default, Objective-C-Regex-Categories creates an alias for NSRegularExpression
  * called `Rx` and creates a macro `RX()` for quick regex creation.
  *
  * If you don't want these macros, add the following statement
  * before you include this library:
  *
- * #define DisableRegexDummyMacros
+ * #define DisableObjective-C-Regex-CategoriesMacros
  */
 
 
@@ -31,7 +52,7 @@
  * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
  */
 
-#ifndef DisableRegexDummyMacros
+#ifndef DisableObjectiveCRegexCategoriesMacros
 #define Rx NSRegularExpression
 #endif
 
@@ -43,7 +64,7 @@
  * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
  */
 
-#ifndef DisableRegexDummyMacros
+#ifndef DisableObjectiveCRegexCategoriesMacros
 #define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
 #endif
 
@@ -80,7 +101,7 @@
  * Extend NSRegularExpression.
  */
 
-@interface NSRegularExpression (RegexDummy)
+@interface NSRegularExpression (ObjectiveCRegexCategories)
 
 
 /*******************************************************/
@@ -195,7 +216,7 @@
  * which is what the match is replaced with.
  *
  * ie.
- * NSString* result = [RX(@"\\w+") replace:@"hi bud" withBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
+ * NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
  *  => @"2 3"
  */
 
@@ -258,7 +279,7 @@
  * Rx in simple operations.
  */
 
-@interface NSString (RegexDummy)
+@interface NSString (ObjectiveCRegexCategories)
 
 
 /**

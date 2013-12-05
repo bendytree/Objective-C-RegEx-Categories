@@ -1,13 +1,11 @@
 //
 //  Replace.m
-//  RegexDummy
-//
-//  Created by Joshua Wright on 11/30/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  Objective-C-Regex-Categories
 //
 
+
 #import <XCTest/XCTest.h>
-#import "RegexDummy.h"
+#import "Objective-C-Regex-Categories.h"
 
 @interface NSString_Replace : XCTestCase @end
 
@@ -28,7 +26,7 @@
 
 - (void) test_replace_with_details_block_can_be_called_on_NSString
 {
-    NSString* result = [@"hi bud" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%i", match.value.length]; }];
+    NSString* result = [@"hi bud" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%lu", match.value.length]; }];
     XCTAssertEqualObjects(result, @"2 3", @"Result should be '2 3'.");
 }
 

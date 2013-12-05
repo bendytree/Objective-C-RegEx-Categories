@@ -1,14 +1,35 @@
 //
-//  RegexDummy.m
-//  RegexDummy
+//  Objective-C-Regex-Categories.m
 //
-//  Created by Joshua Wright on 11/29/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  https://github.com/bendytree/Objective-C-RegEx-Categories
+//
+//
+//  The MIT License (MIT)
+// 
+//  Copyright (c) 2013 Josh Wright <@BendyTree>
+// 
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+// 
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+// 
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 
-#import "RegexDummy.h"
+#import "Objective-C-Regex-Categories.h"
 
-@implementation NSRegularExpression (RegexDummy)
+@implementation NSRegularExpression (ObjectiveCRegexCategories)
 
 - (id) initWithPattern:(NSString*)pattern
 {
@@ -38,7 +59,7 @@
 - (int) indexOf:(NSString*)matchee
 {
     NSRange range = [self rangeOfFirstMatchInString:matchee options:0 range:NSMakeRange(0, matchee.length)];
-    return range.location == NSNotFound ? -1 : range.location;
+    return range.location == NSNotFound ? -1 : (int)range.location;
 }
 
 - (NSArray*) split:(NSString *)str
@@ -62,8 +83,8 @@
     //add between splits ranges and last range
     for(int i=0; i<matchingRanges.count; i++){
         BOOL isLast = i+1 == matchingRanges.count;
-        int startLoc = [matchingRanges[i] rangeValue].location + [matchingRanges[i] rangeValue].length;
-        int endLoc = isLast ? str.length : [matchingRanges[i+1] rangeValue].location;
+        unsigned long startLoc = [matchingRanges[i] rangeValue].location + [matchingRanges[i] rangeValue].length;
+        unsigned long endLoc = isLast ? str.length : [matchingRanges[i+1] rangeValue].location;
         [pieceRanges addObject:[NSValue valueWithRange:NSMakeRange(startLoc, endLoc-startLoc)]];
     }
     
@@ -95,7 +116,7 @@
     NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
     //replace each match (right to left so indexing doesn't get messed up)
-    for (int i=matches.count-1; i>=0; i--) {
+    for (int i=(int)matches.count-1; i>=0; i--) {
         NSTextCheckingResult* match = matches[i];
         NSString* matchStr = [string substringWithRange:match.range];
         NSString* replacement = replacer(matchStr);
@@ -117,7 +138,7 @@
     NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
     //replace each match (right to left so indexing doesn't get messed up)
-    for (int i=matches.count-1; i>=0; i--) {
+    for (int i=(int)matches.count-1; i>=0; i--) {
         NSTextCheckingResult* result = matches[i];
         RxMatch* match = [self resultToMatch:result original:string];
         NSString* replacement = replacer(match);
@@ -195,7 +216,7 @@
 
 
 
-@implementation NSString (RegexDummy)
+@implementation NSString (ObjectiveCRegexCategories)
 
 - (NSRegularExpression*) toRx
 {

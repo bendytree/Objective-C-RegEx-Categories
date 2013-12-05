@@ -1,13 +1,11 @@
 //
 //  NSString+Matches.m
-//  RegexDummy
-//
-//  Created by Joshua Wright on 12/1/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  Objective-C-Regex-Categories
 //
 
+
 #import <XCTest/XCTest.h>
-#import "RegexDummy.h"
+#import "Objective-C-Regex-Categories.h"
 
 @interface NSString_Matches : XCTestCase @end
 
@@ -18,7 +16,7 @@
 {
     NSString* str = @"My email is me@example.com and yours is you@example.com";
     NSArray* matches = [str matches:RX(@"\\w+[@]\\w+[.](\\w+)")];
-    XCTAssertEqual(matches.count, 2U, @"Should have 2 matches.");
+    XCTAssertEqual(matches.count, 2ul, @"Should have 2 matches.");
     XCTAssertEqualObjects(matches[0], @"me@example.com", @"First match should be 'me@example.com'.");
     XCTAssertEqualObjects(matches[1], @"you@example.com", @"Second match should be 'you@example.com'.");
 }
@@ -36,7 +34,7 @@
     NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
     
     //two matches should be found
-    XCTAssertEqual(matches.count, 2U, @"Should have 2 matches.");
+    XCTAssertEqual(matches.count, 2ul, @"Should have 2 matches.");
     
     //all matches should be RxMatch objects
     for (id match in matches){

@@ -1,13 +1,11 @@
 //
 //  Macros.m
-//  RegexDummy
-//
-//  Created by Joshua Wright on 11/30/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  Objective-C-Regex-Categories
 //
 
+
 #import <XCTest/XCTest.h>
-#import "RegexDummy.h"
+#import "Objective-C-Regex-Categories.h"
 
 @interface Macros : XCTestCase @end
 

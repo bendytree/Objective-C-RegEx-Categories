@@ -1,13 +1,11 @@
 //
 //  Initialization.m
-//  RegexDummy
-//
-//  Created by Joshua Wright on 11/29/13.
-//  Copyright (c) 2013 Bendy Tree. All rights reserved.
+//  Objective-C-Regex-Categories
 //
 
+
 #import <XCTest/XCTest.h>
-#import "RegexDummy.h"
+#import "Objective-C-Regex-Categories.h"
 
 @interface NSRegularExpression_Initialization : XCTestCase @end
 

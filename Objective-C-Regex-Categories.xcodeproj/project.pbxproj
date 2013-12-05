@@ -22,7 +22,6 @@
 		BC7CC8021848F785007FCB6B /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BC7CC8011848F785007FCB6B /* readme.md */; };
 		BC7CC8041848FF46007FCB6B /* NSRegularExpression+IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC8031848FF46007FCB6B /* NSRegularExpression+IsMatch.m */; };
 		BC7CC806184901A6007FCB6B /* NSRegularExpression+Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC805184901A6007FCB6B /* NSRegularExpression+Initialization.m */; };
-		BC7CC8091849035C007FCB6B /* RegexDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC8081849035C007FCB6B /* RegexDummy.m */; };
 		BC7CC80B18496409007FCB6B /* NSRegularExpression+IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80A18496409007FCB6B /* NSRegularExpression+IndexOf.m */; };
 		BC7CC80D184A3C71007FCB6B /* NSRegularExpression+Split.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80C184A3C71007FCB6B /* NSRegularExpression+Split.m */; };
 		BC7CC80F184A56E3007FCB6B /* NSRegularExpression+Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */; };
@@ -32,6 +31,7 @@
 		BC7CC817184AF846007FCB6B /* NSString+IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */; };
 		BC7CC819184AF963007FCB6B /* NSString+IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */; };
 		BC7CC81B184AF9ED007FCB6B /* NSString+Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */; };
+		BCCD4862185004D90038ADCB /* Objective-C-Regex-Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD4861185004D90038ADCB /* Objective-C-Regex-Categories.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,32 +40,30 @@
 			containerPortal = BC7CC7C71848F63D007FCB6B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BC7CC7CE1848F63D007FCB6B;
-			remoteInfo = RegexDummy;
+			remoteInfo = "Objective-C-Regex-Categories";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BC54F65E184B794200888C73 /* NSString+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Matches.m"; sourceTree = "<group>"; };
 		BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Matches.m"; sourceTree = "<group>"; };
-		BC7CC7CF1848F63D007FCB6B /* RegexDummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexDummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7CC7CF1848F63D007FCB6B /* Objective-C-Regex-Categories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Objective-C-Regex-Categories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7D21848F63E007FCB6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC7CC7D41848F63E007FCB6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BC7CC7D61848F63E007FCB6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BC7CC7DA1848F63E007FCB6B /* RegexDummy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegexDummy-Info.plist"; sourceTree = "<group>"; };
+		BC7CC7DA1848F63E007FCB6B /* Objective-C-Regex-Categories-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Objective-C-Regex-Categories-Info.plist"; sourceTree = "<group>"; };
 		BC7CC7DC1848F63E007FCB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC7CC7DE1848F63E007FCB6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BC7CC7E01848F63E007FCB6B /* RegexDummy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RegexDummy-Prefix.pch"; sourceTree = "<group>"; };
+		BC7CC7E01848F63E007FCB6B /* Objective-C-Regex-Categories-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objective-C-Regex-Categories-Prefix.pch"; sourceTree = "<group>"; };
 		BC7CC7E11848F63E007FCB6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC7CC7E21848F63E007FCB6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BC7CC7EA1848F63E007FCB6B /* RegexDummyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegexDummyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Objective-C-Regex-CategoriesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7CC7EB1848F63E007FCB6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		BC7CC7F31848F63E007FCB6B /* RegexDummyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegexDummyTests-Info.plist"; sourceTree = "<group>"; };
+		BC7CC7F31848F63E007FCB6B /* Objective-C-Regex-CategoriesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Objective-C-Regex-CategoriesTests-Info.plist"; sourceTree = "<group>"; };
 		BC7CC7F51848F63E007FCB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC7CC8011848F785007FCB6B /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		BC7CC8031848FF46007FCB6B /* NSRegularExpression+IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+IsMatch.m"; sourceTree = "<group>"; };
 		BC7CC805184901A6007FCB6B /* NSRegularExpression+Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Initialization.m"; sourceTree = "<group>"; };
-		BC7CC8071849035C007FCB6B /* RegexDummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexDummy.h; sourceTree = "<group>"; };
-		BC7CC8081849035C007FCB6B /* RegexDummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexDummy.m; sourceTree = "<group>"; };
 		BC7CC80A18496409007FCB6B /* NSRegularExpression+IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+IndexOf.m"; sourceTree = "<group>"; };
 		BC7CC80C184A3C71007FCB6B /* NSRegularExpression+Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Split.m"; sourceTree = "<group>"; };
 		BC7CC80E184A56E3007FCB6B /* NSRegularExpression+Replace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+Replace.m"; sourceTree = "<group>"; };
@@ -75,6 +73,8 @@
 		BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IndexOf.m"; sourceTree = "<group>"; };
 		BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IsMatch.m"; sourceTree = "<group>"; };
 		BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Initialization.m"; sourceTree = "<group>"; };
+		BCCD4860185004D90038ADCB /* Objective-C-Regex-Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objective-C-Regex-Categories.h"; sourceTree = "<group>"; };
+		BCCD4861185004D90038ADCB /* Objective-C-Regex-Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Objective-C-Regex-Categories.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +104,11 @@
 		BC7CC7C61848F63D007FCB6B = {
 			isa = PBXGroup;
 			children = (
-				BC7CC8071849035C007FCB6B /* RegexDummy.h */,
-				BC7CC8081849035C007FCB6B /* RegexDummy.m */,
+				BCCD4860185004D90038ADCB /* Objective-C-Regex-Categories.h */,
+				BCCD4861185004D90038ADCB /* Objective-C-Regex-Categories.m */,
 				BC7CC8011848F785007FCB6B /* readme.md */,
-				BC7CC7D81848F63E007FCB6B /* RegexDummy */,
-				BC7CC7F11848F63E007FCB6B /* RegexDummyTests */,
+				BC7CC7D81848F63E007FCB6B /* Objective-C-Regex-Categories */,
+				BC7CC7F11848F63E007FCB6B /* Objective-C-Regex-Categories-Tests */,
 				BC7CC7D11848F63D007FCB6B /* Frameworks */,
 				BC7CC7D01848F63D007FCB6B /* Products */,
 			);
@@ -117,8 +117,8 @@
 		BC7CC7D01848F63D007FCB6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC7CC7CF1848F63D007FCB6B /* RegexDummy.app */,
-				BC7CC7EA1848F63E007FCB6B /* RegexDummyTests.xctest */,
+				BC7CC7CF1848F63D007FCB6B /* Objective-C-Regex-Categories.app */,
+				BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,28 +134,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BC7CC7D81848F63E007FCB6B /* RegexDummy */ = {
+		BC7CC7D81848F63E007FCB6B /* Objective-C-Regex-Categories */ = {
 			isa = PBXGroup;
 			children = (
 				BC7CC7E11848F63E007FCB6B /* AppDelegate.h */,
 				BC7CC7E21848F63E007FCB6B /* AppDelegate.m */,
 				BC7CC7D91848F63E007FCB6B /* Supporting Files */,
 			);
-			path = RegexDummy;
+			path = "Objective-C-Regex-Categories";
 			sourceTree = "<group>";
 		};
 		BC7CC7D91848F63E007FCB6B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BC7CC7DA1848F63E007FCB6B /* RegexDummy-Info.plist */,
+				BC7CC7DA1848F63E007FCB6B /* Objective-C-Regex-Categories-Info.plist */,
 				BC7CC7DB1848F63E007FCB6B /* InfoPlist.strings */,
 				BC7CC7DE1848F63E007FCB6B /* main.m */,
-				BC7CC7E01848F63E007FCB6B /* RegexDummy-Prefix.pch */,
+				BC7CC7E01848F63E007FCB6B /* Objective-C-Regex-Categories-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BC7CC7F11848F63E007FCB6B /* RegexDummyTests */ = {
+		BC7CC7F11848F63E007FCB6B /* Objective-C-Regex-Categories-Tests */ = {
 			isa = PBXGroup;
 			children = (
 				BC7CC7F21848F63E007FCB6B /* Supporting Files */,
@@ -173,13 +173,14 @@
 				BC54F660184B7DE500888C73 /* NSRegularExpression+Matches.m */,
 				BC54F65E184B794200888C73 /* NSString+Matches.m */,
 			);
-			path = RegexDummyTests;
+			name = "Objective-C-Regex-Categories-Tests";
+			path = "Objective-C-Regex-CategoriesTests";
 			sourceTree = "<group>";
 		};
 		BC7CC7F21848F63E007FCB6B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BC7CC7F31848F63E007FCB6B /* RegexDummyTests-Info.plist */,
+				BC7CC7F31848F63E007FCB6B /* Objective-C-Regex-CategoriesTests-Info.plist */,
 				BC7CC7F41848F63E007FCB6B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -188,9 +189,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC7CC7CE1848F63D007FCB6B /* RegexDummy */ = {
+		BC7CC7CE1848F63D007FCB6B /* Objective-C-Regex-Categories */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC7CC7FB1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "RegexDummy" */;
+			buildConfigurationList = BC7CC7FB1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "Objective-C-Regex-Categories" */;
 			buildPhases = (
 				BC7CC7CB1848F63D007FCB6B /* Sources */,
 				BC7CC7CC1848F63D007FCB6B /* Frameworks */,
@@ -200,14 +201,14 @@
 			);
 			dependencies = (
 			);
-			name = RegexDummy;
-			productName = RegexDummy;
-			productReference = BC7CC7CF1848F63D007FCB6B /* RegexDummy.app */;
+			name = "Objective-C-Regex-Categories";
+			productName = "Objective-C-Regex-Categories";
+			productReference = BC7CC7CF1848F63D007FCB6B /* Objective-C-Regex-Categories.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BC7CC7E91848F63E007FCB6B /* RegexDummyTests */ = {
+		BC7CC7E91848F63E007FCB6B /* Objective-C-Regex-CategoriesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC7CC7FE1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "RegexDummyTests" */;
+			buildConfigurationList = BC7CC7FE1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "Objective-C-Regex-CategoriesTests" */;
 			buildPhases = (
 				BC7CC7E61848F63E007FCB6B /* Sources */,
 				BC7CC7E71848F63E007FCB6B /* Frameworks */,
@@ -218,9 +219,9 @@
 			dependencies = (
 				BC7CC7F01848F63E007FCB6B /* PBXTargetDependency */,
 			);
-			name = RegexDummyTests;
-			productName = RegexDummyTests;
-			productReference = BC7CC7EA1848F63E007FCB6B /* RegexDummyTests.xctest */;
+			name = "Objective-C-Regex-CategoriesTests";
+			productName = "Objective-C-Regex-CategoriesTests";
+			productReference = BC7CC7EA1848F63E007FCB6B /* Objective-C-Regex-CategoriesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -237,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC7CC7CA1848F63D007FCB6B /* Build configuration list for PBXProject "RegexDummy" */;
+			buildConfigurationList = BC7CC7CA1848F63D007FCB6B /* Build configuration list for PBXProject "Objective-C-Regex-Categories" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -249,8 +250,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC7CC7CE1848F63D007FCB6B /* RegexDummy */,
-				BC7CC7E91848F63E007FCB6B /* RegexDummyTests */,
+				BC7CC7CE1848F63D007FCB6B /* Objective-C-Regex-Categories */,
+				BC7CC7E91848F63E007FCB6B /* Objective-C-Regex-CategoriesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -280,9 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCD4862185004D90038ADCB /* Objective-C-Regex-Categories.m in Sources */,
 				BC7CC7E31848F63E007FCB6B /* AppDelegate.m in Sources */,
 				BC7CC7DF1848F63E007FCB6B /* main.m in Sources */,
-				BC7CC8091849035C007FCB6B /* RegexDummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +312,7 @@
 /* Begin PBXTargetDependency section */
 		BC7CC7F01848F63E007FCB6B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BC7CC7CE1848F63D007FCB6B /* RegexDummy */;
+			target = BC7CC7CE1848F63D007FCB6B /* Objective-C-Regex-Categories */;
 			targetProxy = BC7CC7EF1848F63E007FCB6B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -416,8 +417,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexDummy/RegexDummy-Prefix.pch";
-				INFOPLIST_FILE = "RegexDummy/RegexDummy-Info.plist";
+				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
+				INFOPLIST_FILE = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -429,8 +430,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexDummy/RegexDummy-Prefix.pch";
-				INFOPLIST_FILE = "RegexDummy/RegexDummy-Info.plist";
+				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
+				INFOPLIST_FILE = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -440,19 +441,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RegexDummy.app/RegexDummy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Objective-C-Regex-Categories.app/Objective-C-Regex-Categories";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexDummy/RegexDummy-Prefix.pch";
+				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RegexDummyTests/RegexDummyTests-Info.plist";
+				INFOPLIST_FILE = "Objective-C-Regex-CategoriesTests/Objective-C-Regex-CategoriesTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -463,15 +464,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RegexDummy.app/RegexDummy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Objective-C-Regex-Categories.app/Objective-C-Regex-Categories";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexDummy/RegexDummy-Prefix.pch";
-				INFOPLIST_FILE = "RegexDummyTests/RegexDummyTests-Info.plist";
+				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
+				INFOPLIST_FILE = "Objective-C-Regex-CategoriesTests/Objective-C-Regex-CategoriesTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -481,7 +482,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC7CC7CA1848F63D007FCB6B /* Build configuration list for PBXProject "RegexDummy" */ = {
+		BC7CC7CA1848F63D007FCB6B /* Build configuration list for PBXProject "Objective-C-Regex-Categories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC7CC7F91848F63E007FCB6B /* Debug */,
@@ -490,7 +491,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC7CC7FB1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "RegexDummy" */ = {
+		BC7CC7FB1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "Objective-C-Regex-Categories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC7CC7FC1848F63E007FCB6B /* Debug */,
@@ -499,7 +500,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC7CC7FE1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "RegexDummyTests" */ = {
+		BC7CC7FE1848F63E007FCB6B /* Build configuration list for PBXNativeTarget "Objective-C-Regex-CategoriesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC7CC7FF1848F63E007FCB6B /* Debug */,
