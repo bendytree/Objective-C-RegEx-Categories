@@ -26,7 +26,7 @@
 
 This project makes regular expressions easy in Objective-C.
 
-As of iOS 4 (and OSX 10.7), [`NSRegularExpression`](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html) was built-in to [Foundation.framework](https://developer.apple.com/library/Mac/DOCUMENTATION/Cocoa/Reference/Foundation/ObjC_classic/_index.html#//apple_ref/doc/uid/20001091). The syntax is somewhat cumbersome, so this library creates categories and macros to simplify usage of `NSRegularExpression`. 
+As of iOS 4 (and OSX 10.7), [`NSRegularExpression`](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html) is built-in to [Foundation.framework](https://developer.apple.com/library/Mac/DOCUMENTATION/Cocoa/Reference/Foundation/ObjC_classic/_index.html#//apple_ref/doc/uid/20001091). The syntax is somewhat cumbersome and it leaves much of the work to you, so this library creates categories and macros to simplify usage of `NSRegularExpression`. 
 
 Here is an example where four lines of code become one:
 
@@ -50,10 +50,10 @@ This library has no dependencies and works for iOS 4+ and OSX 10.7+.
 
 To install it, just copy these two files into your project:
 
- - RegExCategories.h
- - RegExCategories.m
+ - [RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)
+ - [RegExCategories.m](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.m)
 
-You may want to add it to your Prefix.pch so that is is available across your code base.
+You may want to add it to your AppName-Prefix.pch so that is is available across your code base.
 
 ```objc
 #ifdef __OBJC__
@@ -62,7 +62,7 @@ You may want to add it to your Prefix.pch so that is is available across your co
 #endif
 ```
 
-You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `Objective-C-Regex-Categories.m` under Targets > Build Phases > Compile Sources ([more info here](http://stackoverflow.com/a/19925947/193896)). 
+You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `Objective-C-Regex-Categories.m` under Targets > Build Phases > Compile Sources ([more info](http://stackoverflow.com/a/19925947/193896)). 
 
 
 
@@ -70,7 +70,7 @@ You also need to have  [ARC](https://developer.apple.com/library/ios/documentati
 <a name="examples"/>
 ## Quick Examples
 
-Here are some quick examples of how you might use the code.
+Here are some quick examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
 
 
 ```objc
@@ -238,13 +238,13 @@ Split an NSString using a regex as the delimiter. The result is an NSArray of NS
 Empty results are not removed. For example:
 
     NSArray* pieces = [@",a,,b," split:RX(@"[,]")];
-    // => @[@"", @"a", @"", @"b",@""]
+    // => @[@"", @"a", @"", @"b", @""]
 
 
 <a name="firstmatch"/>
 ##First Match
 
-First match returns the first match as an `NSString`. If no match is found, nil is returned.
+Get the first match as an `NSString`. If no match is found, nil is returned.
 
 ###### First Match from NSString
 
@@ -291,7 +291,7 @@ Matches returns all matches as an `NSArray`, each as an `NSString`. If no matche
 
 ###### Matches With Details (from NSString or NSRegularExpression)
 
-Matches with details returns all matches as an `NSArray``, each object is an [RxMatch](#rxmatch) object.
+Matches with details returns all matches as an `NSArray`, each object is an [RxMatch](#rxmatch) object.
 
     NSArray* matches = [@"55 or 99 spiders" matchesWithDetails:RX(@"\\d+")];
     // => @[ RxMatch, RxMatch ]
@@ -365,7 +365,9 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
 <a name="support"/>
 ## Support
 
-If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues), [send a pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls), or tweet at me [@BendyTree](http://twitter.com/bendytree).
+If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls).
+
+My name is Josh - you can visit my website at [joshwright.com](joshwright.com) or tweet at me [@BendyTree](http://twitter.com/bendytree).
 
 
 <a name="licensing"/>
@@ -377,8 +379,6 @@ If you need help, [submit an issue](https://github.com/bendytree/Objective-C-Reg
 <a name="testing"/>
 ## Testing
 
-This repository includes unit tests written in the [XCTest](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UnitTestYourApp/UnitTestYourApp.html) framework. These test are automatically verified using [Travis-CI](https://travis-ci.org/bendytree/Objective-C-RegEx-Categories). Here is the current status:
-
-[![Build Status](https://travis-ci.org/bendytree/Objective-C-RegEx-Categories.png)](https://travis-ci.org/bendytree/Objective-C-RegEx-Categories)
+This repository includes unit tests written in the [XCTest](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UnitTestYourApp/UnitTestYourApp.html) framework. 
 
 
