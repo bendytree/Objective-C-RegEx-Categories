@@ -402,6 +402,6 @@ There are a few other options for using regular expressions in objective-c inclu
 Here is a list of projects using Objective-C RegEx Categories. If you're using it, [tweet at me](http://twitter.com/bendytree) (@BendyTree) and I'll add you to the list:
 
  - [Memorize Anything](https://itunes.apple.com/us/app/memorize-anything/id430219093?ls=1&mt=8)
- - [SpeakY](View in App Store)
+ - [SpeakY](https://itunes.apple.com/us/app/speaky-instant-sound-system/id654845699?ls=1&mt=8)
 
 
