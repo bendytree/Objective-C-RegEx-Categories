@@ -20,6 +20,8 @@
  - [Support](#support)
  - [Licensing](#licensing)
  - [Testing](#testing)
+ - [Alternatives](#alternatives)
+ - [Who Uses It](#whousesit)
 
 
 <a name="introduction"/>
@@ -381,5 +383,25 @@ My name is Josh - you can visit my website at [joshwright.com](joshwright.com) o
 ## Testing
 
 This repository includes unit tests written in the [XCTest](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UnitTestYourApp/UnitTestYourApp.html) framework. 
+
+
+<a name="alternatives"/>
+## Alternatives
+
+There are a few other options for using regular expressions in objective-c including:
+
+ - Raw [NSRegularExpression](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html)
+ - [RegexKitLite](http://regexkit.sourceforge.net/RegexKitLite/)
+ - [CocoaRegex](https://github.com/psychs/cocoaregex)
+
+
+
+<a name="whousesit"/>
+## Who Uses It?
+
+Here is a list of projects using Objective-C RegEx Categories. If you're using it, [tweet at me](http://twitter.com/bendytree) (@BendyTree) and I'll add you to the list:
+
+ - [Memorize Anything](https://itunes.apple.com/us/app/memorize-anything/id430219093?ls=1&mt=8)
+ - [SpeakY](View in App Store)
 
 
