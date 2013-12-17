@@ -368,9 +368,9 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
 <a name="support"/>
 ## Support
 
-If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls).
+If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls). Please include appropriate unit tests in any pull requests.
 
-My name is Josh - you can visit my website at [joshwright.com](joshwright.com) or tweet at me [@BendyTree](http://twitter.com/bendytree).
+You can visit my website at [joshwright.com](http://joshwright.com) or tweet at me [@BendyTree](http://twitter.com/bendytree).
 
 
 <a name="licensing"/>
