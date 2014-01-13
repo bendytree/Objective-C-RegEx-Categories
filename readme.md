@@ -331,6 +331,22 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
     // => @"3 5"
 
 
+###### Replace From NSString
+
+Replace can also be called from an `NSString`.
+
+    NSString* result = [@"ruf ruff!" replaceRX(@"ruf+") with:@"meow"];
+    // => @"meow meow!"
+    
+    NSString* result = [@"i love COW" replace:RX(@"[A-Z]+") withBlock:^(NSString*){ return @"lamp"; }];
+    // => @"i love lamp"
+
+    NSString* result = [@"two three" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ 
+        return [NSString stringWithFormat:@"%i", match.value.length];
+    }];
+    // => @"3 5"
+
+
 <a name="rxmatch"/>
 ## RxMatch Objects
 
