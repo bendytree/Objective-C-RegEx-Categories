@@ -406,9 +406,9 @@ This repository includes unit tests written in the [XCTest](https://developer.ap
 
 There are a few other options for using regular expressions in objective-c including:
 
- - Raw [NSRegularExpression](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html)
- - [RegexKitLite](http://regexkit.sourceforge.net/RegexKitLite/)
- - [CocoaRegex](https://github.com/psychs/cocoaregex)
+ - Raw [NSRegularExpression](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40009708) - Built in to Foundation since OSX 10.7 and iOS 4.0.
+ - [RegexKitLite](http://regexkit.sourceforge.net/RegexKitLite/) - Bridge between NSString and [ICU Regex](http://site.icu-project.org/)
+ - [CocoaRegex](https://github.com/psychs/cocoaregex) - Alternative bridge to ICU
 
 
 
