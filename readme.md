@@ -147,7 +147,7 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 
 ```objc
 #define DisableRegExCategoriesMacros
-#inclue "RegExCategories.h"
+#include "RegExCategories.h"
 ```
 
 <a name="creation"/>
