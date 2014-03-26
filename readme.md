@@ -89,7 +89,7 @@ BOOL isMatch = [@"2345" isMatch:RX(@"^\\d+$")];
 NSString* age = [@"My dog is 3." firstMatch:RX(@"\\d+")];
 
 //Get matches as a string array
-NSArray* words = [@"Hey pal" match:RX(@"\\w+")];
+NSArray* words = [@"Hey pal" matches:RX(@"\\w+")];
 // words => @[ @"Hey", @"pal" ]
 
 //Get first match with details
