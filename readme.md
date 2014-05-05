@@ -73,7 +73,7 @@ You also need to have  [ARC](https://developer.apple.com/library/ios/documentati
 <a name="examples"/>
 ## Quick Examples
 
-Here are some quick examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
+Here are some short examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
 
 
 ```objc
