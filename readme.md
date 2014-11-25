@@ -1,7 +1,5 @@
 # Objective-C RegEx Categories
 
-## Table of Contents
-
 <img title="Make Regular Expressions Easier in Objective-C" alt="Make Regular Expressions Easier in Objective-C" src="https://raw.github.com/bendytree/Objective-C-RegEx-Categories/master/TestProject/Objective-C-Regex-Categories/Images/icon.png" align="right" width="250" height="250" />
 
  - [Introduction](#introduction)
