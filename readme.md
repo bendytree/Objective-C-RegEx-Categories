@@ -1,7 +1,8 @@
 # Objective-C RegEx Categories
 
-
 ## Table of Contents
+
+<img title="Make Regular Expressions Easier in Objective-C" alt="Make Regular Expressions Easier in Objective-C" src="https://raw.github.com/bendytree/Objective-C-RegEx-Categories/master/TestProject/Objective-C-Regex-Categories/Images/icon.png" align="right" width="250" height="250" />
 
  - [Introduction](#introduction)
  - [Getting Started](#gettingstarted)
@@ -19,6 +20,8 @@
  - [Support](#support)
  - [Licensing](#licensing)
  - [Testing](#testing)
+ - [Alternatives](#alternatives)
+ - [Who Uses It](#whousesit)
 
 
 <a name="introduction"/>
@@ -62,7 +65,7 @@ You may want to add it to your AppName-Prefix.pch so that is is available across
 #endif
 ```
 
-You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `Objective-C-Regex-Categories.m` under Targets > Build Phases > Compile Sources ([more info](http://stackoverflow.com/a/19925947/193896)). 
+You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `RegExCategories.m` under Targets > Build Phases > Compile Sources ([more info](http://stackoverflow.com/a/19925947/193896)). 
 
 
 
@@ -70,7 +73,7 @@ You also need to have  [ARC](https://developer.apple.com/library/ios/documentati
 <a name="examples"/>
 ## Quick Examples
 
-Here are some quick examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
+Here are some short examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
 
 
 ```objc
@@ -86,7 +89,7 @@ BOOL isMatch = [@"2345" isMatch:RX(@"^\\d+$")];
 NSString* age = [@"My dog is 3." firstMatch:RX(@"\\d+")];
 
 //Get matches as a string array
-NSString* words = [@"Hey pal" firstMatch:RX(@"\\w+")];
+NSArray* words = [@"Hey pal" matches:RX(@"\\w+")];
 // words => @[ @"Hey", @"pal" ]
 
 //Get first match with details
@@ -144,7 +147,7 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 
 ```objc
 #define DisableRegExCategoriesMacros
-#inclue "RegExCategories.h"
+#include "RegExCategories.h"
 ```
 
 <a name="creation"/>
@@ -328,6 +331,22 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
     // => @"3 5"
 
 
+###### Replace From NSString
+
+Replace can also be called from an `NSString`.
+
+    NSString* result = [@"ruf ruff!" replaceRX(@"ruf+") with:@"meow"];
+    // => @"meow meow!"
+    
+    NSString* result = [@"i love COW" replace:RX(@"[A-Z]+") withBlock:^(NSString*){ return @"lamp"; }];
+    // => @"i love lamp"
+
+    NSString* result = [@"two three" replace:RX(@"\\w+") withDetailsBlock:^(RxMatch* match){ 
+        return [NSString stringWithFormat:@"%i", match.value.length];
+    }];
+    // => @"3 5"
+
+
 <a name="rxmatch"/>
 ## RxMatch Objects
 
@@ -365,9 +384,9 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
 <a name="support"/>
 ## Support
 
-If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls).
+If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls). Please include appropriate unit tests in any pull requests.
 
-My name is Josh - you can visit my website at [joshwright.com](joshwright.com) or tweet at me [@BendyTree](http://twitter.com/bendytree).
+You can visit my website at [joshwright.com](http://joshwright.com) or tweet at me [@BendyTree](http://twitter.com/bendytree).
 
 
 <a name="licensing"/>
@@ -381,4 +400,24 @@ My name is Josh - you can visit my website at [joshwright.com](joshwright.com) o
 
 This repository includes unit tests written in the [XCTest](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UnitTestYourApp/UnitTestYourApp.html) framework. 
 
+
+<a name="alternatives"/>
+## Alternatives
+
+There are a few other options for using regular expressions in objective-c including:
+
+ - Raw [NSRegularExpression](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40009708) - Built in to Foundation since OSX 10.7 and iOS 4.0.
+ - [RegexKitLite](http://regexkit.sourceforge.net/RegexKitLite/) - Bridge between NSString and [ICU Regex](http://site.icu-project.org/)
+ - [CocoaRegex](https://github.com/psychs/cocoaregex) - Alternative bridge to ICU
+
+
+
+<a name="whousesit"/>
+## Who Uses It?
+
+Here is a list of projects using Objective-C RegEx Categories. If you're using it, [tweet at me](http://twitter.com/bendytree) (@BendyTree) and I'll add you to the list:
+
+ - [Memorize Anything](https://itunes.apple.com/us/app/memorize-anything/id430219093?ls=1&mt=8)
+ - [SpeakY](https://itunes.apple.com/us/app/speaky-instant-sound-system/id654845699?ls=1&mt=8)
+ - [Oyster 1.2](http://www.rwe-uk.com/site/comments/oyster_1.2_the_mac_regex_tool_released)
 
