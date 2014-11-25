@@ -28,7 +28,7 @@
 <a name="introduction"/>
 ## Introduction
 
-This project makes regular expressions easy in Objective-C.
+This project simplifies regular expressions in Objective-C and Swift.
 
 As of iOS 4 (and OSX 10.7), [`NSRegularExpression`](https://developer.apple.com/library/Mac/DOCUMENTATION/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html) is built-in to [Foundation.framework](https://developer.apple.com/library/Mac/DOCUMENTATION/Cocoa/Reference/Foundation/ObjC_classic/_index.html#//apple_ref/doc/uid/20001091). The syntax is somewhat cumbersome and it leaves much of the work to you, so this library creates categories and macros to simplify usage of `NSRegularExpression`. 
 
