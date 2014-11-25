@@ -113,6 +113,9 @@
  *
  * ie.
  * Rx* rx = [[Rx alloc] initWithString:@"\d+"];
+ * 
+ * Swift:
+ * var rx = NSRegularExpression(pattern:"\d+");
  */
 
 - (NSRegularExpression*) initWithPattern:(NSString*)pattern;
@@ -123,6 +126,9 @@
  *
  * ie.
  * Rx* rx = [Rx rx:@"\d+"];
+ * 
+ * Swift:
+ * var rx = NSRegularExpression.rx("\d+");
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern;
@@ -134,6 +140,9 @@
  *
  * ie.
  * Rx* rx = [Rx rx:@"\d+" ignoreCase:YES];
+ * 
+ * Swift:
+ * var rx = NSRegularExpression.rx("\d+", ignoreCase: true);
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern ignoreCase:(BOOL)ignoreCase;
@@ -144,6 +153,9 @@
  *
  * ie.
  * Rx* rx = [Rx rx:@"\d+" options:NSRegularExpressionCaseInsensitive];
+ * 
+ * Swift:
+ * var rx = NSRegularExpression.rx("\d+", options: .CaseInsensitive);
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern options:(NSRegularExpressionOptions)options;
@@ -160,6 +172,10 @@
  * ie.
  * Rx* rx = RX(@"\d+");
  * BOOL isMatch = [rx isMatch:@"Dog #1"]; // => true
+ * 
+ * Swift:
+ * var rx = NSRegularExpression.rx("\d+");
+ * var isMatch = rx.isMatch("Dog #1"); // => true
  */
 
 - (BOOL) isMatch:(NSString*)matchee;
