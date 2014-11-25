@@ -6,6 +6,9 @@
 
  - [Introduction](#introduction)
  - [Getting Started](#gettingstarted)
+   - [Cocoa Pods](#gettingstarted-cocoapods)
+   - [Download](#gettingstarted-download)
+   - [Swift Support](#gettingstarted-swift)
  - [Quick Examples](#examples)
  - [Documentation](#documentation)
    - [Macros](#macros)
@@ -49,14 +52,24 @@ BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
 <a name="gettingstarted"/>
 ## Getting Started
 
-This library has no dependencies and works for iOS 4+ and OSX 10.7+.
+This library has no dependencies and works for iOS 4+ and OSX 10.7+. 
 
-To install it, just copy these two files into your project:
+<a name="gettingstarted-cocoapods"/>
+### Installing Via CocoaPods
+
+If you use [Cocoa Pods](http://cocoapods.org/), then just add the following to your `Podfile`. Then run `pod install` from the command line.
+
+    pod 'RegExCategories', '~> 1.0'
+
+<a name="gettingstarted-download"/>
+### Installing Via Download
+
+You can also just copy these two files into your project:
 
  - [RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)
  - [RegExCategories.m](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.m)
 
-You may want to add it to your AppName-Prefix.pch so that is is available across your code base.
+You may want to add it to your [AppName]-Prefix.pch so that is is available across your code base.
 
 ```objc
 #ifdef __OBJC__
@@ -67,7 +80,28 @@ You may want to add it to your AppName-Prefix.pch so that is is available across
 
 You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your XCode project. If you don't then add the `-fobjc-arc` flag on `RegExCategories.m` under Targets > Build Phases > Compile Sources ([more info](http://stackoverflow.com/a/19925947/193896)). 
 
+<a name="gettingstarted-swift"/>
+### Swift Support
 
+You can use these extensions in [Swift](https://developer.apple.com/swift/). There are [additional steps](http://michal.codes/integrating-cocoapods-with-a-swift-project/) you must take to use Objective-C code from Swift. Once you've installed via Cocoa Pods or via download, do the following:
+
+ 1. Add a Bridging Header
+    
+    This file will allow you to use objective-c code from your `.swift` code. Create an objective-c header file named [YourProjectName]-Bridging-Header.h
+
+ 2. Configure The Bridging Header
+    
+    In the `Build Settings` of your main project, scroll down to the "Swift Compiler - Code Generation" section. In "Objective-C Bridging Header" add your file. Typically your value will be `[YourProjectName]/[YourProjectName]-Bridging-Header.h`.  Build your project - if you have errors then you've set the wrong path.
+
+ 3. Import RegExCategories
+ 
+    In your bridging header, import the header for this library. For example, if you use Cocoa Pods it may look like this:
+
+        #import <RegExCategories/RegExCategories.h>
+    
+    If you just copied the files in to your project, it may look like this:
+    
+        #import "RegExCategories.h"
 
 
 <a name="examples"/>
@@ -116,6 +150,17 @@ NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* ma
 // result => @"2 3"
 ```
 
+You can also use the extensions in Swift, though macros are not available. Most examples are in Objective-C but here are some Swift examples:
+
+```swift
+//Create an NSRegularExpression
+var rx = NSRegularExpression(pattern:"\\d");
+var rx = NSRegularExpression.rx("\\d", ignoreCase:true);
+var rx = NSRegularExpression.rx("\\d", options: .CaseInsensitive);
+
+//Test if Matches a String
+var isMatch = rx.isMatch("3 dogs");
+```
 
 <a name="documentation"/>
 ## Documentation
