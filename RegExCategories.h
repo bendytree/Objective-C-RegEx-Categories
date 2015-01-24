@@ -81,16 +81,16 @@
  */
 
 @interface RxMatch : NSObject
-@property (retain) NSString* value;    /* The substring that matched the expression. */
-@property (assign) NSRange   range;    /* The range of the original string that was matched. */
-@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
-@property (retain) NSString* original; /* The full original string that was matched against.  */
+@property (nonatomic, copy)     NSString* value;    /* The substring that matched the expression. */
+@property (nonatomic, assign)   NSRange   range;    /* The range of the original string that was matched. */
+@property (nonatomic, copy)     NSArray*  groups;   /* Each object is an RxMatchGroup. */
+@property (nonatomic, copy)     NSString* original; /* The full original string that was matched against.  */
 @end
 
 
 @interface RxMatchGroup : NSObject
-@property (retain) NSString* value;
-@property (assign) NSRange range;
+@property (nonatomic, copy)   NSString* value;
+@property (nonatomic, assign) NSRange range;
 @end
 
 
