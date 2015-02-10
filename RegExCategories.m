@@ -179,13 +179,13 @@
     
     //groups
     NSMutableArray* groups = [NSMutableArray array];
-    match.groups = groups;
     for(int i=0; i<result.numberOfRanges; i++){
         RxMatchGroup* group = [[RxMatchGroup alloc] init];
         group.range = [result rangeAtIndex:i];
         group.value = group.range.length ? [original substringWithRange:group.range] : nil;
         [groups addObject:group];
     }
+    match.groups = groups;
     
     return match;
 }
