@@ -204,7 +204,7 @@
 
 
 /**
- * Replaces all occurances in a string with a replacement string.
+ * Replaces all occurrences in a string with a replacement string.
  *
  * ie.
  * NSString* result = [RX(@"ruf+") replace:@"ruf ruff!" with:@"meow"];
@@ -215,7 +215,7 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives the match
+ * Replaces all occurrences of a regex using a block. The block receives the match
  * and should return the replacement.
  *
  * ie.
@@ -227,7 +227,7 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives a RxMatch object
+ * Replaces all occurrences of a regex using a block. The block receives a RxMatch object
  * that contains all the details of the match and should return a string
  * which is what the match is replaced with.
  *
@@ -365,7 +365,7 @@
 
 
 /**
- * Replaces all occurances of a regex with a replacement string.
+ * Replaces all occurrences of a regex with a replacement string.
  *
  * ie.
  * NSString* result = [@"ruf ruff!" replace:RX(@"ruf+") with:@"meow"];
@@ -376,7 +376,7 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives the match
+ * Replaces all occurrences of a regex using a block. The block receives the match
  * and should return the replacement.
  *
  * ie.
@@ -388,7 +388,7 @@
 
 
 /**
- * Replaces all occurances of a regex using a block. The block receives an RxMatch
+ * Replaces all occurrences of a regex using a block. The block receives an RxMatch
  * object which contains all of the details for each match and should return a string
  * which is what the match is replaced with.
  *
