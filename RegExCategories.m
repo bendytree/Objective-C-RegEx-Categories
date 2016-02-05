@@ -164,7 +164,7 @@
     return replaced;
 }
 
-- (NSArray*) matches:(NSString*)str
+- (NSArray<NSTextCheckingResult *> *) matches:(NSString*)str
 {
     NSMutableArray* matches = [NSMutableArray array];
     
@@ -206,7 +206,7 @@
     return match;
 }
 
-- (NSArray*) matchesWithDetails:(NSString*)str
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSString*)str
 {
     NSMutableArray* matches = [NSMutableArray array];
     

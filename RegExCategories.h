@@ -248,7 +248,7 @@
  *  => @[ @"me@example.com", @"you@example.com" ]
  */
 
-- (NSArray*) matches:(NSString*)str;
+- (NSArray<NSTextCheckingResult *> *) matches:(NSString*)str;
 
 
 /**
@@ -272,7 +272,7 @@
  * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
  */
 
-- (NSArray*) matchesWithDetails:(NSString*)str;
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSString*)str;
 
 
 /**
