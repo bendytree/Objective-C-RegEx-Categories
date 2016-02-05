@@ -118,6 +118,7 @@
 				BC7CC7D01848F63D007FCB6B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		BC7CC7D01848F63D007FCB6B /* Products */ = {
 			isa = PBXGroup;
