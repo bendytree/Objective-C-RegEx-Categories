@@ -250,18 +250,18 @@ Get the character index of the first match. If no match is found, then `-1`.
 
 ######From NSRegularExpression
 
-    int index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
+    NSUInteger index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
     // => 4
 
-    int index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
+    NSUInteger index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
     // => -1
 
 ######From NSString
 
-    int index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
+    NSUInteger index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
     // => 4
 
-    int index = [@"Buy a dog?" indexOf:RX(@"\\d+")];
+    NSUInteger index = [@"Buy a dog?" indexOf:RX(@"\\d+")];
     // => -1
 
 
