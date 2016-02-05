@@ -185,10 +185,10 @@
  * Returns the index of the first match of the passed string.
  *
  * ie.
- * int i = [RX(@"\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
+ * NSUInteger i = [RX(@"\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
  */
 
-- (int) indexOf:(NSString*)str;
+- (NSUInteger) indexOf:(NSString*)str;
 
 
 /**
@@ -346,10 +346,10 @@
  * the regex passed in.
  *
  * ie.
- * int i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\d+")]; // => 4
+ * NSUInteger i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\d+")]; // => 4
  */
 
-- (int) indexOf:(NSRegularExpression*)rx;
+- (NSUInteger) indexOf:(NSRegularExpression*)rx;
 
 
 /**
