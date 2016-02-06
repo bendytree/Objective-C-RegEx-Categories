@@ -123,6 +123,7 @@
          
          NSString* matchStr = [string substringWithRange:range];
          NSString* replacement = replacer(matchStr);
+         if (replacement == nil)  return;
          
          range.location += offset;
          
@@ -153,6 +154,7 @@
          
          RxMatch* match = [self resultToMatch:result original:string];
          NSString* replacement = replacer(match);
+         if (replacement == nil)  return;
          
          range.location += offset;
          
