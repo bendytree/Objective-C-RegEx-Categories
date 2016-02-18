@@ -463,4 +463,4 @@ Here is a list of projects using Objective-C RegEx Categories. If you're using i
  - [Memorize Anything](https://itunes.apple.com/us/app/memorize-anything/id430219093?ls=1&mt=8)
  - [SpeakY](https://itunes.apple.com/us/app/speaky-instant-sound-system/id654845699?ls=1&mt=8)
  - [Oyster 1.2](http://www.rwe-uk.com/site/comments/oyster_1.2_the_mac_regex_tool_released)
-
+ - [Loaf — Recipes for Easy Cooking](https://geo.itunes.apple.com/gb/app/loaf-recipes-for-easy-cooking/id956511078?mt=8)
