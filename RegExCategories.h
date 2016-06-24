@@ -49,7 +49,7 @@
  * Creates a macro (alias) for NSRegularExpression named `Rx`.
  *
  * ie.
- * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
+ * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\\d+" options:0 error:nil];
  */
 
 #ifndef DisableRegExCategoriesMacros
@@ -61,7 +61,7 @@
  * Creates a macro (alias) for NSRegularExpression named `Rx`.
  *
  * ie.
- * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
+ * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\\d+" options:0 error:nil];
  */
 
 #ifndef DisableRegExCategoriesMacros
@@ -112,10 +112,10 @@
  * Initialize an Rx object from a string.
  *
  * ie.
- * Rx* rx = [[Rx alloc] initWithString:@"\d+"];
+ * Rx* rx = [[Rx alloc] initWithString:@"\\d+"];
  * 
  * Swift:
- * var rx = NSRegularExpression(pattern:"\d+");
+ * var rx = NSRegularExpression(pattern:"\\d+");
  */
 
 - (NSRegularExpression*) initWithPattern:(NSString*)pattern;
@@ -125,10 +125,10 @@
  * Initialize an Rx object from a string.
  *
  * ie.
- * Rx* rx = [Rx rx:@"\d+"];
+ * Rx* rx = [Rx rx:@"\\d+"];
  * 
  * Swift:
- * var rx = NSRegularExpression.rx("\d+");
+ * var rx = NSRegularExpression.rx("\\d+");
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern;
@@ -139,10 +139,10 @@
  * is case sensitive, but this signature allows you to change that.
  *
  * ie.
- * Rx* rx = [Rx rx:@"\d+" ignoreCase:YES];
+ * Rx* rx = [Rx rx:@"\\d+" ignoreCase:YES];
  * 
  * Swift:
- * var rx = NSRegularExpression.rx("\d+", ignoreCase: true);
+ * var rx = NSRegularExpression.rx("\\d+", ignoreCase: true);
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern ignoreCase:(BOOL)ignoreCase;
@@ -152,10 +152,10 @@
  * Initialize an Rx object from a string and options.
  *
  * ie.
- * Rx* rx = [Rx rx:@"\d+" options:NSRegularExpressionCaseInsensitive];
+ * Rx* rx = [Rx rx:@"\\d+" options:NSRegularExpressionCaseInsensitive];
  * 
  * Swift:
- * var rx = NSRegularExpression.rx("\d+", options: .CaseInsensitive);
+ * var rx = NSRegularExpression.rx("\\d+", options: .CaseInsensitive);
  */
 
 + (NSRegularExpression*) rx:(NSString*)pattern options:(NSRegularExpressionOptions)options;
@@ -167,14 +167,14 @@
 
 /**
  * Returns true if the string matches the regex. May also
- * be called on NSString as [@"\d" isMatch:rx].
+ * be called on NSString as [@"\\d" isMatch:rx].
  *
  * ie.
- * Rx* rx = RX(@"\d+");
+ * Rx* rx = RX(@"\\d+");
  * BOOL isMatch = [rx isMatch:@"Dog #1"]; // => true
  * 
  * Swift:
- * var rx = NSRegularExpression.rx("\d+");
+ * var rx = NSRegularExpression.rx("\\d+");
  * var isMatch = rx.isMatch("Dog #1"); // => true
  */
 
@@ -185,7 +185,7 @@
  * Returns the index of the first match of the passed string.
  *
  * ie.
- * int i = [RX(@"\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
+ * int i = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"]; // => 4
  */
 
 - (int) indexOf:(NSString*)str;
@@ -302,7 +302,7 @@
  * Initialize an NSRegularExpression object from a string.
  *
  * ie.
- * NSRegularExpression* rx = [@"\d+" toRx];
+ * NSRegularExpression* rx = [@"\\d+" toRx];
  */
 
 - (NSRegularExpression*) toRx;
@@ -314,7 +314,7 @@
  * is case sensitive.
  *
  * ie.
- * NSRegularExpression* rx = [@"\d+" toRxIgnoreCase:YES];
+ * NSRegularExpression* rx = [@"\\d+" toRxIgnoreCase:YES];
  */
 
 - (NSRegularExpression*) toRxIgnoreCase:(BOOL)ignoreCase;
@@ -324,7 +324,7 @@
  * Initialize an NSRegularExpression object from a string with options.
  *
  * ie.
- * NSRegularExpression* rx = [@"\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
+ * NSRegularExpression* rx = [@"\\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
  */
 
 - (NSRegularExpression*) toRxWithOptions:(NSRegularExpressionOptions)options;
@@ -335,7 +335,7 @@
  * be called as on Rx as [rx isMatch:@"some string"].
  *
  * ie.
- * BOOL isMatch = [@"Dog #1" isMatch:RX(@"\d+")]; // => true
+ * BOOL isMatch = [@"Dog #1" isMatch:RX(@"\\d+")]; // => true
  */
 
 - (BOOL) isMatch:(NSRegularExpression*)rx;
@@ -346,7 +346,7 @@
  * the regex passed in.
  *
  * ie.
- * int i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\d+")]; // => 4
+ * int i = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")]; // => 4
  */
 
 - (int) indexOf:(NSRegularExpression*)rx;
