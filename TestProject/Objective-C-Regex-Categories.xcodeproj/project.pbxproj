@@ -30,7 +30,6 @@
 		BC7CC817184AF846007FCB6B /* NSString+IndexOf.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */; };
 		BC7CC819184AF963007FCB6B /* NSString+IsMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */; };
 		BC7CC81B184AF9ED007FCB6B /* NSString+Initialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */; };
-		BCCD4868185009E80038ADCB /* docs.md in Resources */ = {isa = PBXBuildFile; fileRef = BCCD4863185009E80038ADCB /* docs.md */; };
 		BCCD4869185009E80038ADCB /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCCD4864185009E80038ADCB /* LICENSE.txt */; };
 		BCCD486A185009E80038ADCB /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD4866185009E80038ADCB /* RegExCategories.m */; };
 		BCCD486B185009E80038ADCB /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BCCD4867185009E80038ADCB /* readme.md */; };
@@ -74,7 +73,7 @@
 		BC7CC816184AF846007FCB6B /* NSString+IndexOf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IndexOf.m"; sourceTree = "<group>"; };
 		BC7CC818184AF963007FCB6B /* NSString+IsMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IsMatch.m"; sourceTree = "<group>"; };
 		BC7CC81A184AF9ED007FCB6B /* NSString+Initialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Initialization.m"; sourceTree = "<group>"; };
-		BCCD4863185009E80038ADCB /* docs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = docs.md; path = ../docs.md; sourceTree = "<group>"; };
+		BCCD4863185009E80038ADCB /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
 		BCCD4864185009E80038ADCB /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
 		BCCD4865185009E80038ADCB /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegExCategories.h; path = ../RegExCategories.h; sourceTree = "<group>"; };
 		BCCD4866185009E80038ADCB /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegExCategories.m; path = ../RegExCategories.m; sourceTree = "<group>"; };
@@ -108,7 +107,7 @@
 		BC7CC7C61848F63D007FCB6B = {
 			isa = PBXGroup;
 			children = (
-				BCCD4863185009E80038ADCB /* docs.md */,
+				BCCD4863185009E80038ADCB /* readme.md */,
 				BCCD4864185009E80038ADCB /* LICENSE.txt */,
 				BCCD4865185009E80038ADCB /* RegExCategories.h */,
 				BCCD4866185009E80038ADCB /* RegExCategories.m */,
@@ -119,6 +118,7 @@
 				BC7CC7D01848F63D007FCB6B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		BC7CC7D01848F63D007FCB6B /* Products */ = {
 			isa = PBXGroup;
@@ -236,7 +236,7 @@
 		BC7CC7C71848F63D007FCB6B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Bendy Tree";
 				TargetAttributes = {
 					BC7CC7E91848F63E007FCB6B = {
@@ -270,7 +270,6 @@
 				BCCD4869185009E80038ADCB /* LICENSE.txt in Resources */,
 				BC7CC7DD1848F63E007FCB6B /* InfoPlist.strings in Resources */,
 				BCCD486B185009E80038ADCB /* readme.md in Resources */,
-				BCCD4868185009E80038ADCB /* docs.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +348,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -364,6 +362,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -389,7 +388,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -427,6 +425,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
 				INFOPLIST_FILE = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bendytree.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -440,6 +439,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
 				INFOPLIST_FILE = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bendytree.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -448,7 +448,6 @@
 		BC7CC7FF1848F63E007FCB6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Objective-C-Regex-Categories.app/Objective-C-Regex-Categories";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -462,6 +461,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Objective-C-Regex-CategoriesTests/Objective-C-Regex-CategoriesTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bendytree.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -471,7 +471,6 @@
 		BC7CC8001848F63E007FCB6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Objective-C-Regex-Categories.app/Objective-C-Regex-Categories";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -481,6 +480,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Objective-C-Regex-Categories/Objective-C-Regex-Categories-Prefix.pch";
 				INFOPLIST_FILE = "Objective-C-Regex-CategoriesTests/Objective-C-Regex-CategoriesTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bendytree.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

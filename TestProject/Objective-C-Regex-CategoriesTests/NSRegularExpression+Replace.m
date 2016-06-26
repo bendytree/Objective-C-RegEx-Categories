@@ -34,12 +34,18 @@
 {
     NSString* result = [RX(@"[A-Z]+") replace:@"i love COW" withBlock:nil];
     XCTAssertEqualObjects(result, @"i love COW", @"Result should be unchanged.");
+    
+    NSString* result2 = [RX(@"\\w+") replace:@"hi bud" withBlock:^NSString *(NSString *match) { return nil; }];
+    XCTAssertEqualObjects(result2, @"hi bud");
 }
 
 - (void) test_replace_replaces_with_sets_callback
 {
     NSString* result = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^(RxMatch* match){ return [NSString stringWithFormat:@"%lu", (unsigned long)match.value.length]; }];
     XCTAssertEqualObjects(result, @"2 3", @"Result should be '2 3'.");
+
+    NSString* result2 = [RX(@"\\w+") replace:@"hi bud" withDetailsBlock:^NSString *(RxMatch *match){ return nil; }];
+    XCTAssertEqualObjects(result2, @"hi bud");
 }
 
 - (void) test_replace_replaces_with_nil_sets_callback_returns_original_string
