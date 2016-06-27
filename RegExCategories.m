@@ -120,7 +120,9 @@
         NSTextCheckingResult* match = matches[i];
         NSString* matchStr = [string substringWithRange:match.range];
         NSString* replacement = replacer(matchStr);
-        [result replaceCharactersInRange:match.range withString:replacement];
+        if (replacement) {
+            [result replaceCharactersInRange:match.range withString:replacement];
+        }
     }
     
     return result;
@@ -142,7 +144,9 @@
         NSTextCheckingResult* result = matches[i];
         RxMatch* match = [self resultToMatch:result original:string];
         NSString* replacement = replacer(match);
-        [replaced replaceCharactersInRange:result.range withString:replacement];
+        if (replacement) {
+            [replaced replaceCharactersInRange:result.range withString:replacement];
+        }
     }
     
     return replaced;
