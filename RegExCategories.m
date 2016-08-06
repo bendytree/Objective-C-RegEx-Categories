@@ -154,7 +154,8 @@
     
     NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     for (NSTextCheckingResult* result in results) {
-        NSString* match = [str substringWithRange:result.range];
+        NSRange range = (result.numberOfRanges > 1) ? [result rangeAtIndex:1] : result.range;
+        NSString* match = [str substringWithRange:range];
         [matches addObject:match];
     }
     
@@ -167,7 +168,8 @@
     
     if (!match) return nil;
     
-    return [str substringWithRange:match.range];
+    NSRange range = (match.numberOfRanges > 1) ? [match rangeAtIndex:1] : match.range;
+    return [str substringWithRange:range];
 }
 
 - (RxMatch*) resultToMatch:(NSTextCheckingResult*)result original:(NSString*)original
