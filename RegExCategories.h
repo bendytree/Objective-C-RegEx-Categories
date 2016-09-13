@@ -179,6 +179,7 @@
  */
 
 - (BOOL) isMatch:(NSString*)matchee;
+- (BOOL) isMatch:(NSString*)matchee range:(NSRange)range;
 
 
 /**
@@ -189,6 +190,7 @@
  */
 
 - (int) indexOf:(NSString*)str;
+- (int) indexOf:(NSString*)str range:(NSRange)range;
 
 
 /**
@@ -201,6 +203,7 @@
  */
 
 - (NSArray*) split:(NSString*)str;
+- (NSArray*) split:(NSString*)str range:(NSRange)range;
 
 
 /**
@@ -212,6 +215,7 @@
  */
 
 - (NSString*) replace:(NSString*)string with:(NSString*)replacement;
+- (NSString*) replace:(NSString*)string with:(NSString*)replacement range:(NSRange)range;
 
 
 /**
@@ -224,6 +228,7 @@
  */
 
 - (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer;
+- (NSString*) replace:(NSString*)string withBlock:(NSString*(^)(NSString* match))replacer range:(NSRange)range;
 
 
 /**
@@ -237,6 +242,7 @@
  */
 
 - (NSString*) replace:(NSString *)string withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
+- (NSString*) replace:(NSString *)string withDetailsBlock:(NSString*(^)(RxMatch* match))replacer range:(NSRange)range;
 
 
 /**
@@ -249,6 +255,7 @@
  */
 
 - (NSArray*) matches:(NSString*)str;
+- (NSArray*) matches:(NSString*)str range:(NSRange)range;
 
 
 /**
@@ -261,6 +268,7 @@
  */
 
 - (NSString*) firstMatch:(NSString*)str;
+- (NSString*) firstMatch:(NSString*)str range:(NSRange)range;
 
 
 /**
@@ -273,6 +281,7 @@
  */
 
 - (NSArray*) matchesWithDetails:(NSString*)str;
+- (NSArray*) matchesWithDetails:(NSString*)str range:(NSRange)range;
 
 
 /**
@@ -285,6 +294,7 @@
  */
 
 - (RxMatch*) firstMatchWithDetails:(NSString*)str;
+- (RxMatch*) firstMatchWithDetails:(NSString*)str range:(NSRange)range;
 
 @end
 
@@ -339,6 +349,7 @@
  */
 
 - (BOOL) isMatch:(NSRegularExpression*)rx;
+- (BOOL) isMatch:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -350,6 +361,7 @@
  */
 
 - (int) indexOf:(NSRegularExpression*)rx;
+- (int) indexOf:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -362,6 +374,7 @@
  */
 
 - (NSArray*) split:(NSRegularExpression*)rx;
+- (NSArray*) split:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -373,6 +386,7 @@
  */
 
 - (NSString*) replace:(NSRegularExpression*)rx with:(NSString*)replacement;
+- (NSString*) replace:(NSRegularExpression*)rx with:(NSString*)replacement range:(NSRange)range;
 
 
 /**
@@ -385,6 +399,7 @@
  */
 
 - (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer;
+- (NSString*) replace:(NSRegularExpression *)rx withBlock:(NSString*(^)(NSString* match))replacer range:(NSRange)range;
 
 
 /**
@@ -398,6 +413,7 @@
  */
 
 - (NSString*) replace:(NSRegularExpression *)rx withDetailsBlock:(NSString*(^)(RxMatch* match))replacer;
+- (NSString*) replace:(NSRegularExpression *)rx withDetailsBlock:(NSString*(^)(RxMatch* match))replacer range:(NSRange)range;
 
 
 /**
@@ -410,6 +426,7 @@
  */
 
 - (NSArray*) matches:(NSRegularExpression*)rx;
+- (NSArray*) matches:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -422,6 +439,7 @@
  */
 
 - (NSString*) firstMatch:(NSRegularExpression*)rx;
+- (NSString*) firstMatch:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -434,6 +452,7 @@
  */
 
 - (NSArray*) matchesWithDetails:(NSRegularExpression*)rx;
+- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx range:(NSRange)range;
 
 
 /**
@@ -445,6 +464,7 @@
  */
 
 - (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx;
+- (RxMatch*) firstMatchWithDetails:(NSRegularExpression*)rx range:(NSRange)range;
 
 @end
 
