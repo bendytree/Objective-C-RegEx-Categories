@@ -198,57 +198,57 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 
 Here are a few convenient ways to create an `NSRegularExpression`.
 
-######Class Method - rx
+###### Class Method - rx
 
     Rx* rx = [Rx rx:@"\\d+"];
 
-######Class Method - ignore case
+###### Class Method - ignore case
 
     Rx* rx = [Rx rx:@"\\d+" ignoreCase:YES];
 
-######Class Method - with options
+###### Class Method - with options
 
     Rx* rx = [Rx rx:@"\\d+" options:NSRegularExpressionCaseInsensitive];
 
-######Init With Pattern
+###### Init With Pattern
 
     Rx* rx = [[Rx alloc] initWithPattern:@"\d+"];
 
-######String Extension
+###### String Extension
 
 	Rx* rx = [@"\\d+" toRx];
 
-######String Extension - ignore case
+###### String Extension - ignore case
 
 	Rx* rx = [@"\\d+" toRxIgnoreCase:YES];
 
-######String Extension - with options
+###### String Extension - with options
 
 	Rx* rx = [@"\\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
 
 
 <a name="ismatch"/>
-##Test If Match
+## Test If Match
 
 Tests whether a regular expression matches a string.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     BOOL isMatch = [RX(@"\\d+") isMatch:@"Dog #1"];
     // => true
 
-######From NSString
+###### From NSString
 
     BOOL isMatch = [@"Dog #1" isMatch:RX(@"\\d+")];
     // => true
 
 
 <a name="indexof"/>
-##Index Of Match
+## Index Of Match
 
 Get the character index of the first match. If no match is found, then `-1`.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     int index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
     // => 4
@@ -256,7 +256,7 @@ Get the character index of the first match. If no match is found, then `-1`.
     int index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
     // => -1
 
-######From NSString
+###### From NSString
 
     int index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
     // => 4
@@ -266,17 +266,17 @@ Get the character index of the first match. If no match is found, then `-1`.
 
 
 <a name="split"/>
-##Split A String
+## Split A String
 
 Split an NSString using a regex as the delimiter. The result is an NSArray of NSString objects.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     NSArray* pieces = [RX(@"[ ,]") split:@"A dog,cat"];
     // => @[@"A", @"dog", @"cat"]
 
 
-######From NSString
+###### From NSString
 
     NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
     // => @[@"A", @"dog", @"cat"]
@@ -288,7 +288,7 @@ Empty results are not removed. For example:
 
 
 <a name="firstmatch"/>
-##First Match
+## First Match
 
 Get the first match as an `NSString`. If no match is found, nil is returned.
 
@@ -321,7 +321,7 @@ If you want more details about the match (such as the range or captured groups),
 
 
 <a name="matches"/>
-##Matches
+## Matches
 
 
 ###### Matches (from NSString or NSRegularExpression)
@@ -347,7 +347,7 @@ Matches with details returns all matches as an `NSArray`, each object is an [RxM
 
 
 <a name="replace"/>
-##Replace
+## Replace
 
 ###### Replace With Template
 
