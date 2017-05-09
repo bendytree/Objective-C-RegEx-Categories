@@ -26,6 +26,7 @@
 
 
 <a name="introduction"/>
+
 ## Introduction
 
 This project simplifies regular expressions in Objective-C and Swift.
@@ -47,19 +48,25 @@ BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
 
 **TIP:** Refer to the header ([RegExCategories.h](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/RegExCategories.h)) for more details and examples.
 
+
 <a name="gettingstarted"/>
+
 ## Getting Started
 
 This library has no dependencies and works for iOS 4+ and OSX 10.7+. 
 
+
 <a name="gettingstarted-cocoapods"/>
+
 ### Installing Via CocoaPods
 
 If you use [Cocoa Pods](http://cocoapods.org/), then just add the following to your `Podfile`. Then run `pod install` from the command line.
 
     pod 'RegExCategories', '~> 1.0'
 
+
 <a name="gettingstarted-download"/>
+
 ### Installing Via Download
 
 You can also just copy these two files into your project:
@@ -78,7 +85,9 @@ You may want to add it to your [AppName]-Prefix.pch so that is is available acro
 
 You also need to have  [ARC](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_2.html) enabled on your Xcode project. If you don't then add the `-fobjc-arc` flag on `RegExCategories.m` under Targets > Build Phases > Compile Sources ([more info](http://stackoverflow.com/a/19925947/193896)). 
 
+
 <a name="gettingstarted-swift"/>
+
 ### Swift Support
 
 You can use these extensions in [Swift](https://developer.apple.com/swift/). There are [additional steps](http://michal.codes/integrating-cocoapods-with-a-swift-project/) you must take to use Objective-C code from Swift. Once you've installed via Cocoa Pods or via download, do the following:
@@ -103,6 +112,7 @@ You can use these extensions in [Swift](https://developer.apple.com/swift/). The
 
 
 <a name="examples"/>
+
 ## Quick Examples
 
 Here are some short examples of how you might use the code. The [documentation](#documentation) section below goes into full detail.
@@ -160,10 +170,14 @@ var rx = NSRegularExpression.rx("\\d", options: .CaseInsensitive);
 var isMatch = rx.isMatch("3 dogs");
 ```
 
+
 <a name="documentation"/>
+
 ## Documentation
 
+
 <a name="macros"/>
+
 ## Macros
 
 First off, we create an alias for NSRegularExpression named `Rx`. So instead of writing `NSRegularExpression` you can now use `Rx`. (this can be disabled - read on)
@@ -193,62 +207,66 @@ These macros can be disabled by defining `DisableRegExCategoriesMacros` before y
 #include "RegExCategories.h"
 ```
 
+
 <a name="creation"/>
+
 ## Creation
 
 Here are a few convenient ways to create an `NSRegularExpression`.
 
-######Class Method - rx
+###### Class Method - rx
 
     Rx* rx = [Rx rx:@"\\d+"];
 
-######Class Method - ignore case
+###### Class Method - ignore case
 
     Rx* rx = [Rx rx:@"\\d+" ignoreCase:YES];
 
-######Class Method - with options
+###### Class Method - with options
 
     Rx* rx = [Rx rx:@"\\d+" options:NSRegularExpressionCaseInsensitive];
 
-######Init With Pattern
+###### Init With Pattern
 
     Rx* rx = [[Rx alloc] initWithPattern:@"\d+"];
 
-######String Extension
+###### String Extension
 
 	Rx* rx = [@"\\d+" toRx];
 
-######String Extension - ignore case
+###### String Extension - ignore case
 
 	Rx* rx = [@"\\d+" toRxIgnoreCase:YES];
 
-######String Extension - with options
+###### String Extension - with options
 
 	Rx* rx = [@"\\d+" toRxWithOptions:NSRegularExpressionCaseInsensitive];
 
 
 <a name="ismatch"/>
-##Test If Match
+
+## Test If Match
 
 Tests whether a regular expression matches a string.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     BOOL isMatch = [RX(@"\\d+") isMatch:@"Dog #1"];
     // => true
 
-######From NSString
+###### From NSString
 
     BOOL isMatch = [@"Dog #1" isMatch:RX(@"\\d+")];
     // => true
 
 
 <a name="indexof"/>
-##Index Of Match
+
+## Index Of Match
 
 Get the character index of the first match. If no match is found, then `-1`.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     int index = [RX(@"\\d+") indexOf:@"Buy 1 dog or buy 2?"];
     // => 4
@@ -256,7 +274,7 @@ Get the character index of the first match. If no match is found, then `-1`.
     int index = [RX(@"\\d+") indexOf:@"Buy a dog?"];
     // => -1
 
-######From NSString
+###### From NSString
 
     int index = [@"Buy 1 dog or buy 2?" indexOf:RX(@"\\d+")];
     // => 4
@@ -266,17 +284,17 @@ Get the character index of the first match. If no match is found, then `-1`.
 
 
 <a name="split"/>
-##Split A String
+
+## Split A String
 
 Split an NSString using a regex as the delimiter. The result is an NSArray of NSString objects.
 
-######From NSRegularExpression
+###### From NSRegularExpression
 
     NSArray* pieces = [RX(@"[ ,]") split:@"A dog,cat"];
     // => @[@"A", @"dog", @"cat"]
 
-
-######From NSString
+###### From NSString
 
     NSArray* pieces = [@"A dog,cat" split:RX(@"[ ,]")];
     // => @[@"A", @"dog", @"cat"]
@@ -288,7 +306,8 @@ Empty results are not removed. For example:
 
 
 <a name="firstmatch"/>
-##First Match
+
+## First Match
 
 Get the first match as an `NSString`. If no match is found, nil is returned.
 
@@ -319,10 +338,9 @@ If you want more details about the match (such as the range or captured groups),
     // => { value: @"55", range:NSRangeMake(0, 2), groups:[RxMatchGroup, ...] }
 
 
-
 <a name="matches"/>
-##Matches
 
+## Matches
 
 ###### Matches (from NSString or NSRegularExpression)
 
@@ -333,7 +351,6 @@ Matches returns all matches as an `NSArray`, each as an `NSString`. If no matche
 
     NSArray* matches = [RX(@"\\d+") matches:@"55 or 99 spiders"];
     // => @[ @"55", @"99" ]
-
 
 ###### Matches With Details (from NSString or NSRegularExpression)
 
@@ -347,7 +364,8 @@ Matches with details returns all matches as an `NSArray`, each object is an [RxM
 
 
 <a name="replace"/>
-##Replace
+
+## Replace
 
 ###### Replace With Template
 
@@ -363,7 +381,6 @@ Replace with block lets you pass an objective-c block that returns the replaceme
     NSString* result = [RX(@"[A-Z]+") replace:@"i love COW" withBlock:^(NSString*){ return @"lamp"; }];
     // => @"i love lamp"
 
-
 ###### Replace With Details Block 
 
 Similar to replace with block, but this block receives an [RxMatch](#rxmatch) for each match. This gives you details about the match such as captured groups.
@@ -372,7 +389,6 @@ Similar to replace with block, but this block receives an [RxMatch](#rxmatch) fo
 	    return [NSString stringWithFormat:@"%i", match.value.length];
 	  }];
     // => @"3 5"
-
 
 ###### Replace From NSString
 
@@ -391,6 +407,7 @@ Replace can also be called from an `NSString`.
 
 
 <a name="rxmatch"/>
+
 ## RxMatch Objects
 
 `RxMatch` and `RxMatchGroup` are objects that contain information about a match and its groups.
@@ -425,6 +442,7 @@ Replace can also be called from an `NSString`.
 
 
 <a name="support"/>
+
 ## Support
 
 If you need help, [submit an issue](https://github.com/bendytree/Objective-C-RegEx-Categories/issues) or send a [pull request](https://github.com/bendytree/Objective-C-RegEx-Categories/pulls). Please include appropriate unit tests in any pull requests.
@@ -433,18 +451,21 @@ You can visit my website at [joshwright.com](http://joshwright.com) or tweet at 
 
 
 <a name="licensing"/>
+
 ## Licensing
 
 [MIT License](https://github.com/bendytree/Objective-C-RegEx-Categories/blob/master/LICENSE.txt) - do whatever you want, just (1) provide attribution and (2) don't hold me liable.
 
 
 <a name="testing"/>
+
 ## Testing
 
 This repository includes unit tests written in the [XCTest](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UnitTestYourApp/UnitTestYourApp.html) framework. 
 
 
 <a name="alternatives"/>
+
 ## Alternatives
 
 There are a few other options for using regular expressions in objective-c including:
@@ -454,8 +475,8 @@ There are a few other options for using regular expressions in objective-c inclu
  - [CocoaRegex](https://github.com/psychs/cocoaregex) - Alternative bridge to ICU
 
 
-
 <a name="whousesit"/>
+
 ## Who Uses It?
 
 Here is a list of projects using Objective-C RegEx Categories. If you're using it, [tweet at me](http://twitter.com/bendytree) (@BendyTree) and I'll add you to the list:
