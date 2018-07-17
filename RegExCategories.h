@@ -61,7 +61,7 @@
  * Creates a macro (alias) for NSRegularExpression named `Rx`.
  *
  * ie.
- * NSRegularExpression* rx = [[Rx alloc] initWithPattern:@"\d+" options:0 error:nil];
+ * NSRegularExpression* rx = RX(@"\d+");
  */
 
 #ifndef DisableRegExCategoriesMacros
